@@ -1,0 +1,38 @@
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        {{!-- sign-up --}}
+        <h2>Sign Up Form</h2>
+        <form action='/user/register' method='POST' class="signup">
+        {{> messages }}
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" placeholder="Full Name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" name="email" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" class="form-control" name="confirmPassword" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+        <br />
+        {{!-- login --}}
+        <p>Or log in <a href="/user/login">here</a></p>
+
+      </div>
+    </div>
+  </div>
