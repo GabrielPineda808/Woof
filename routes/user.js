@@ -1,10 +1,9 @@
 const express = require('express');
+const router = express.Router();
 const passport = require('../config/passport');
 const { forwardAuthenticated, ensureAuthenticated } = require('../config/middleware/auth');
 
-// user login/logout/dog profile routes
-
-const router = express.Router();
+// user login/logout/profile routes
 
 router.get('/', ensureAuthenticated, (req, res) => {
   // TODO: replace this view with user profile
@@ -29,13 +28,8 @@ router.get('/logout', (req, res) => {
   res.redirect('/')
 })
 
-router.get('/:dogId', (req, res) => {
+router.get('/:ownerName/:dogId', (req, res) => {
   // TODO: replace this view with dog profile
-  res.sendStatus(200);
-})
-
-router.get('/dog_register', (req, res) => {
-  // TODO: replace this view with register new dog profile
   res.sendStatus(200);
 })
 

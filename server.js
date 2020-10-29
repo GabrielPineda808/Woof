@@ -25,9 +25,10 @@ app.use(passport.session());
 app.use(flash());
 
 app.use('/', require('./routes'));
+app.use('/register', require('./routes/register'));
 app.use('/user', require('./routes/user'));
-app.use('/search', require('./routes/search'))
-app.use('/review', require('./routes/review'))
+app.use('/search', require('./routes/search'));
+app.use('/review', require('./routes/review'));
 
 const port = process.env.PORT || 3000;
 

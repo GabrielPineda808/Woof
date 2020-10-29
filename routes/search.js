@@ -1,9 +1,9 @@
-// routes for searches
-
 const express = require('express');
 const router = express.Router();
 
+// routes for searches
+
 router.get('/', (req, res) => {
-  // TODO:
+  // TODO: replace this view with search page
   res.sendStatus(200);
 })
