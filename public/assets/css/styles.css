@@ -2,6 +2,9 @@ body {
   padding-top: 65px;
 }
 
+/* ==================================================================== */
+/* homepage */
+
 .carousel-item {
   height: 100vh;
   position: relative;
@@ -31,6 +34,9 @@ body {
   font-family: 'Trispace', sans-serif;
   color: white;
 }
+
+/* ==================================================================== */
+/* navbar */
 
 .navbar-custom {
   background: #F5F4F2;
@@ -63,4 +69,10 @@ a.nav-link {
 
 a.nav-link:hover {
   color: #FF7851
+}
+
+/* ==================================================================== */
+/* login page */
+.login-photo {
+  width: 150px;
 }
