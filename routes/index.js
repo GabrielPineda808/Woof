@@ -4,7 +4,7 @@ const { forwardAuthenticated } = require('../config/middleware/auth');
 
 router.get('/', forwardAuthenticated, (req, res) => {
   // TODO: replace this view with homepage
-  res.sendStatus(200);
+  res.render('index');
 })
 
 module.exports = router;

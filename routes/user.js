@@ -10,9 +10,13 @@ router.get('/', ensureAuthenticated, (req, res) => {
   res.sendStatus(200);
 })
 
-router.get('/login', forwardAuthenticated, (req, res) => {
-  res.render('login', { success: req.flash('login'), loginErrors: req.flash('error'), logout: req.flash('logout')});
+router.get('/login', (req, res) => {
+  res.render('login');
 })
+
+// router.get('/login', forwardAuthenticated, (req, res) => {
+//   res.render('login', { success: req.flash('login'), loginErrors: req.flash('error'), logout: req.flash('logout')});
+// })
 
 router.post('/login', (req, res, next) => {
   passport.authenticate("local", {

@@ -12,3 +12,5 @@ router.post('/dog/:dogId', (req, res) => {
   // TODO: create new row in dog review table
   res.sendStatus(200);
 })
+
+module.exports = router;
