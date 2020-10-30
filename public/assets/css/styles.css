@@ -1,5 +1,6 @@
 body {
   padding-top: 64px;
+  background-color: #F5F4F2
 }
 
 /* ==================================================================== */
@@ -75,10 +76,8 @@ a.nav-link:hover {
 /* login page */
 
 .login-page {
-  background-image: url('/assets/images/login_background_alt.png');
-  background-size: cover;
-  height: 100vh;
-  background-repeat: no-repeat;
+  max-width: 100%;
+  position: fixed;
 }
 
 .card {
@@ -96,3 +95,13 @@ a.nav-link:hover {
   color: #f1bdaf
 }
 
+/* ==================================================================== */
+/* register page */
+
+.register-page {
+  background-image: url('/assets/images/signup_background.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: contain;
+}
