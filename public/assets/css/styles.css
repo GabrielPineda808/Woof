@@ -1,5 +1,5 @@
 .carousel-item {
-  height: 40rem;
+  height: 100vh;
   position: relative;
   background: grey;
   color: white;
@@ -12,8 +12,35 @@
   right: 0;
   top: 0;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   opacity: 0.5;
 }
 
+.carousel-caption {
+  bottom: 18rem;
+  text-align: center;
+}
+
+.carousel-caption h1 {
+  font-size: 8rem;
+  font-family: 'Romanesco', cursive;
+  color: #FF7851;
+}
+
+.navbar {
+  background: #F5F4F2;
+}
+
+.navbar-brand {
+  font-family: 'Romanesco', cursive;
+  color: #FF7851;
+  font-size: 2rem;
+  margin: 0px 0px;
+  padding: 0px 0px;
+  letter-spacing: 0.05em;
+}
+
+a.navbar-brand:hover {
+  color: #FF7851
+}
