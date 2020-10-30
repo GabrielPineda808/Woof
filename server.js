@@ -8,6 +8,8 @@ const db = require ('./models');
 
 const app = express();
 
+app.use(express.static('public'));
+
 app.engine('handlebars', exphbs({ defaultLayout:'main' }))
 app.set('view engine', 'handlebars');
 app.use(express.urlencoded({ extended:true }))

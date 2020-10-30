@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
-const formValidate = require('../public/formValidate');
+const formValidate = require('/assets/js/formValidate');
 
 // registration routes
 
