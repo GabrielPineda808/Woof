@@ -1,3 +1,10 @@
+body {
+  padding-top: 64px;
+}
+
+/* ==================================================================== */
+/* homepage */
+
 .carousel-item {
   height: 100vh;
   position: relative;
@@ -28,6 +35,9 @@
   color: white;
 }
 
+/* ==================================================================== */
+/* navbar */
+
 .navbar-custom {
   background: #F5F4F2;
 }
@@ -36,8 +46,8 @@
   font-family: 'Romanesco', cursive;
   color: #FF7851;
   font-size: 2rem;
-  margin: 0px 0px;
-  padding: 0px 0px;
+  margin: 0px 5px;
+  padding: 0px 5px;
   letter-spacing: 0.05em;
 }
 
@@ -60,3 +70,29 @@ a.nav-link {
 a.nav-link:hover {
   color: #FF7851
 }
+
+/* ==================================================================== */
+/* login page */
+
+.login-page {
+  background-image: url('/assets/images/login_background_alt.png');
+  background-size: cover;
+  height: 100vh;
+  background-repeat: no-repeat;
+}
+
+.card {
+  margin-top: 15%;
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4));
+  color: white;
+}
+
+.login-photo {
+  width: 150px;
+  margin-bottom: 2rem;
+}
+
+.sign-up-link {
+  color: #f1bdaf
+}
+
