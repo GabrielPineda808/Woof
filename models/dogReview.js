@@ -1,5 +1,3 @@
-var bcrypt = require("bcryptjs")
-
 module.exports = function (sequelize, DataTypes) {
     var DogReview = sequelize.define("DogReview", {
         dates: {
@@ -23,6 +21,20 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         }
     });
-    
-return DogReview;
-  };
+    // dog reviews go to dog
+    DogReview.associate = function (models) {
+        DogReview.belongsTo(models.Dog, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
+    DogReview.associate = function (models) {
+        DogReview.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
+    return DogReview;
+};
