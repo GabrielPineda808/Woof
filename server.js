@@ -4,16 +4,16 @@ const exphbs = require ('express-handlebars');
 const passport = require('passport');
 const session = require('express-session');
 const flash = require('connect-flash');
-const db = require ('./models');
+// const db = require ('./models');
 
 const app = express();
 
-app.use(express.static('public'));
 
 app.engine('handlebars', exphbs({ defaultLayout:'main' }))
 app.set('view engine', 'handlebars');
 app.use(express.urlencoded({ extended:true }))
 app.use(express.json());
+app.use(express.static('public'));
 
 app.use(session({
   secret: process.env.session_secret,
@@ -34,10 +34,15 @@ app.use('/review', require('./routes/review'));
 
 const port = process.env.PORT || 3000;
 
-db.sequelize.sync({ force: true }).then(function() {
-  app.listen(port, () => {
-    console.log(`server started on port ${port}`)
-  })
+// TODO:  replace with db.sequelize.sync()
+app.listen(port, () => {
+  console.log(`server started on port ${port}`)
 })
+
+// db.sequelize.sync({ force: true }).then(function() {
+//   app.listen(port, () => {
+//     console.log(`server started on port ${port}`)
+//   })
+// })
 
 // 

@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../models');
-const formValidate = require('/assets/js/formValidate');
+// const db = require('../models');
+const formValidate = require('../public/assets/js/formValidate');
+const { forwardAuthenticated } = require('../config/middleware/auth');
 
 // registration routes
 
@@ -36,3 +37,5 @@ router.post('/dog', (req, res) => {
   // TODO: replace this view with register new dog profile
   res.sendStatus(200);
 })
+
+module.exports = router;

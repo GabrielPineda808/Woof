@@ -7,3 +7,5 @@ router.get('/', (req, res) => {
   // TODO: replace this view with search page
   res.sendStatus(200);
 })
+
+module.exports = router;
