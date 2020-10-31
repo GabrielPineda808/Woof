@@ -17,27 +17,30 @@ router.post('/', async (req, res) => {
   let newUser = {
     name: uName,
     gender: uGender,
+    bio: null,
     email,
     password,
   }
   let newDog = {
     name: dName,
     gender: dGender,
+    bio: null,
     breed,
     age,
     temperament,
   }
 
-  // await db.sequelize.transaction(async (transaction) => {
-  //   let newUser = await db.user.create(req.body.user, { transaction });
+  await db.sequelize.transaction(async (transaction) => {
+    let userInsert = await db.user.create(newUser, { transaction });
     
-  //   await db.dog.create({ 
-  //     ...req.body.dog, 
-  //     userId: newUser.id,
-  //   }, { transaction })
-    
-  //   res.redirect('/user/login')
-  // })
+    await db.dog.create({ 
+      ...newDog, 
+      userId: userInsert.id,
+    }, { transaction })
+  })
+  
+  req.flash('login', 'You are now registered and can log in.')
+  res.redirect('/user/login')
   // res.redirect(307, '/user/login');
 })
 

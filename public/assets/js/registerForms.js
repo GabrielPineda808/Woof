@@ -49,46 +49,4 @@ $(document).ready(function() {
     })
     $formProgress.css('width', '50%');
   }
-
-  // async function submitForm() {
-  //   let userName = $("#userForm input[name='name']");
-  //   let userEmail = $("#userForm input[name='email']");
-  //   let password = $("#userForm input[name='password']");
-  //   let userGender = $("#userForm :input:checked");
-  //   let dogName = $("#dogForm input[name='name']");
-  //   let dogBreed = $("#dogForm input[name='breed']")
-  //   let dogAge = $("#dogForm input[name='age']")
-  //   let dogTemp = $("#dogForm input[name='temperament']")
-  //   let dogGender = $("#dogForm :input:checked")
-
-  //   let user = {
-  //     name: userName.val().trim(),
-  //     email: userEmail.val().trim(),
-  //     password: password.val().trim(),
-  //     gender: userGender.val(),
-  //     bio: null,
-  //   }
-
-  //   let dog = {
-  //     name: dogName.val().trim(),
-  //     breed: dogBreed.val().trim(),
-  //     age: dogAge.val().trim(),
-  //     gender: dogGender.val(),
-  //     temperament: dogTemp.val().trim(),
-  //     bio: null,
-  //   }
-
-  //   let newRegister = await $.ajax('/register', {
-  //     type: 'POST',
-  //     data: { user, dog },
-  //   })
-  //   location.href = '/user/login';
-
-  // }
-
-
-  
-
-
-
 })
