@@ -189,3 +189,13 @@ a.nav-link:hover {
   left: 50%;
   transform: translate(-50%, 0);
 }
+
+.userRadioValid {
+  display: none;
+  color: red;
+}
+
+.inputValid {
+  border-radius: 5px;
+  border: 0.5px solid red;
+}

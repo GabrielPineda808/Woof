@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  var Dog = sequelize.define("Dog", {
+  const Dog = sequelize.define("dog", {
     // The email cannot be null, and must be a proper email before creation
     name: {
       type: DataTypes.STRING,
@@ -30,19 +30,20 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: true
     }
   });
-  // Dogs go to user
   Dog.associate = function (models) {
-    Dog.belongsTo(models.User, {
+    // Dogs go to user
+    Dog.belongsTo(models.user, {
       foreignKey: {
         allowNull: false
       }
     });
-  };
-  // Dog has many reviews
-  Dog.associate = function (models) {
-    Dog.hasMany(models.DogReview, {
+    
+    // Dog has many reviews
+    Dog.hasMany(models.dogReview, {
       onDelete: "cascade"
     });
+
   };
+
   return Dog;
 };

@@ -1,7 +1,7 @@
-var bcrypt = require("bcryptjs")
+const bcrypt = require("bcrypt")
 
 module.exports = function (sequelize, DataTypes) {
-  var User = sequelize.define("User", {
+  const User = sequelize.define("user", {
     // The email cannot be null, and must be a proper email before creation
     email: {
       type: DataTypes.STRING,
@@ -35,23 +35,23 @@ module.exports = function (sequelize, DataTypes) {
   User.addHook("beforeCreate", function (user) {
     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10));
   });
-  // User has many dogs
+
   User.associate = function (models) {
-    User.hasMany(models.Dog, {
+    // User has many dogs
+    User.hasMany(models.dog, {
       onDelete: "cascade"
     });
-  };
-  // User has many reviews
-  User.associate = function (models) {
-    User.hasMany(models.UserReview, {
+
+    // User has many reviews
+    User.hasMany(models.userReview, {
       onDelete: "cascade"
-    });
-  };
-// For the User's reviews on other dogs
-  User.associate = function(models) {
+    })
+
+    // For the User's reviews on other dogs
     User.hasMany(models.dogReview, {
       onDelete: "cascade"
     });
   };
+
   return User;
 };

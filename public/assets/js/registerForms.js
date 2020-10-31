@@ -4,9 +4,11 @@ $(document).ready(function() {
   let $userForm = $("#userForm");
   let $dogForm = $("#dogForm");
   let $formProgress = $("#progress");
+  let $submitFormBtn = $("#submitFormBtn");
 
   $nextBtn.on("click", nextForm);
   $prevBtn.on("click", prevForm);
+  $submitFormBtn.con("click", submitForm);
 
   function nextForm(e) {
     e.preventDefault();
@@ -16,12 +18,26 @@ $(document).ready(function() {
     });
     $formProgress.css('width', '100%');
 
-    let userFormInputs = $("#userForm :input:checked")
-    userFormVals = userFormInputs.each(function() {
-      let elem = $(this);
-      console.log(elem.val());
-      
-    })
+    // let userName = $("#userForm input[name='name']");
+    // let userEmail = $("#userForm input[name='email']");
+    // let password = $("#userForm input[name='password']");
+    // let confirmPassword = $("#userForm input[name='confirmPassword']");
+    // let userGender = $("#userForm :input:checked");
+
+    // let userFormArr = [userName, userEmail, password, confirmPassword];
+
+    // userFormArr.forEach(elem => {
+    //   if (!elem.val()) {
+    //     elem.addClass('inputValid');
+    //   }
+    // })
+    // console.log(genderRadio);
+    // if (genderRadio.length === 0) {
+    //   let $userRadioValid = $(".userRadioValid");
+    //   $userRadioValid.css('display', 'inline-block')
+    // } else {
+
+    // };
   }
 
   function prevForm(e) {
@@ -30,34 +46,25 @@ $(document).ready(function() {
       $userForm.fadeIn('fast', 0);
     })
     $formProgress.css('width', '50%');
+  }
 
+  function submitForm(e) {
+    let userName = $("#userForm input[name='name']");
+    let userEmail = $("#userForm input[name='email']");
+    let password = $("#userForm input[name='password']");
+    let userGender = $("#userForm :input:checked");
+    let dogName = $("#dogForm input[name='name']");
+    let dogBreed = $("#dogForm input[name='breed']")
+    let dogAge = $("#dogForm input[name='age']")
+    let dogTemp = $("#dogForm input[name='temperament']")
+    let dogGender = $("#dogForm :input:checked")
+
+    
   }
 
 
   
 
-  function userValidation(name, email, password, confirmPassword, checkUser) {
-    let hbsObject = {
-      errors: []
-    }
-  
-    if (!name || !email || !password || !confirmPassword) {
-      hbsObject.errors.push({message: 'Please enter all fields'});
-    }
-  
-    if (password !== confirmPassword) {
-      hbsObject.errors.push({message: 'Passwords do not match.'});
-    }
-    const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$/
-    if (!regex.test(password)) {
-      hbsObject.errors.push({message: 'Password must be 6 characters long and include one of each of the following: lowercase letter, uppercase letter, number.'})
-    }
-  
-    if (checkUser) {
-      hbsObject.errors.push({ message: 'Account with that email already exists. Please login to access that account.'})
-    }
-  
-    return hbsObject;
-  }
+
 
 })

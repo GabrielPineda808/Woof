@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var UserReview = sequelize.define("UserReview", {
+    var UserReview = sequelize.define("userReview", {
         body: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -12,8 +12,14 @@ module.exports = function (sequelize, DataTypes) {
     // UserReview goes to User (poster)
     // Use ID of user posting review
     UserReview.associate = function (models) {
-        UserReview.belongsTo(models.User, {
+        UserReview.belongsTo(models.user, {
             as: 'posterId',
+            foreignKey: {
+                allowNull: false
+            }
+        });
+        UserReview.belongsTo(models.user, {
+            as: 'posteeId',
             foreignKey: {
                 allowNull: false
             }
@@ -21,13 +27,6 @@ module.exports = function (sequelize, DataTypes) {
     };
     // UserReview goes to User (postee)
     // Use ID of user profile being viewed
-    UserReview.associate = function (models) {
-        UserReview.belongsTo(models.User, {
-            as: 'posteeId',
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
+
     return UserReview;
 };

@@ -4,7 +4,7 @@ const exphbs = require ('express-handlebars');
 const passport = require('passport');
 const session = require('express-session');
 const flash = require('connect-flash');
-// const db = require ('./models');
+const db = require ('./models');
 
 const app = express();
 
@@ -34,15 +34,10 @@ app.use('/review', require('./routes/review'));
 
 const port = process.env.PORT || 3000;
 
-// TODO:  replace with db.sequelize.sync()
-app.listen(port, () => {
-  console.log(`server started on port ${port}`)
+db.sequelize.sync({ force: true }).then(function() {
+  app.listen(port, () => {
+    console.log(`server started on port ${port}`)
+  })
 })
-
-// db.sequelize.sync({ force: true }).then(function() {
-//   app.listen(port, () => {
-//     console.log(`server started on port ${port}`)
-//   })
-// })
 
 // 
