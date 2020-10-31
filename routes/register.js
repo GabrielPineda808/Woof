@@ -8,7 +8,7 @@ const { forwardAuthenticated } = require('../config/middleware/auth');
 
 router.get('/', forwardAuthenticated, (req, res) => {
   // TODO: replace this view with register page
-  res.sendStatus(200);
+  res.render('signUp');
 })
 
 router.post('/', async (req, res) => {
