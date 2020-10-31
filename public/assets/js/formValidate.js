@@ -1,4 +1,4 @@
-module.exports = function(name, email, password, confirmPassword, checkUser) {
+function userValidation(name, email, password, confirmPassword, checkUser) {
   let hbsObject = {
     errors: []
   }
@@ -21,3 +21,5 @@ module.exports = function(name, email, password, confirmPassword, checkUser) {
 
   return hbsObject;
 }
+
+module.exports = { userValidation }
