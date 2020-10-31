@@ -34,10 +34,10 @@ app.use('/review', require('./routes/review'));
 
 const port = process.env.PORT || 3000;
 
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync().then(function() {
   app.listen(port, () => {
     console.log(`server started on port ${port}`)
   })
 })
 
-// 
+// { force: true }

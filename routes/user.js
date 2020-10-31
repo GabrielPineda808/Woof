@@ -7,11 +7,12 @@ const { forwardAuthenticated, ensureAuthenticated } = require('../config/middlew
 
 router.get('/', ensureAuthenticated, (req, res) => {
   // TODO: replace this view with user profile
-  res.sendStatus(200);
+  console.log(req.user);
+  res.render('userprofile');
 })
 
 router.get('/login', (req, res) => {
-  res.render('login', { success: req.flash('login') });
+  res.render('login', { success: req.flash('login'), logout: req.flash('logout') });
 })
 
 // router.get('/login', forwardAuthenticated, (req, res) => {
@@ -29,7 +30,7 @@ router.post('/login', (req, res, next) => {
 router.get('/logout', (req, res) => {
   req.logout();
   req.flash('logout', 'You have successfully logged out.')
-  res.redirect('/')
+  res.redirect('/user/login')
 })
 
 router.get('/:ownerName/:dogId', (req, res) => {
