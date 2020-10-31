@@ -12,23 +12,33 @@ router.get('/', forwardAuthenticated, (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-  await db.sequelize.transaction(async (transaction) => {
-    let newUser = await db.user.create(req.body.user, { transaction });
+  // console.log(req.body);
+  let { uName, email, password, uGender, dName, breed, age, temperament, dGender } = req.body;
+  let newUser = {
+    name: uName,
+    gender: uGender,
+    email,
+    password,
+  }
+  let newDog = {
+    name: dName,
+    gender: dGender,
+    breed,
+    age,
+    temperament,
+  }
+
+  // await db.sequelize.transaction(async (transaction) => {
+  //   let newUser = await db.user.create(req.body.user, { transaction });
     
-    await db.dog.create({ 
-      ...req.body.dog, 
-      userId: newUser.id,
-    }, { transaction })
+  //   await db.dog.create({ 
+  //     ...req.body.dog, 
+  //     userId: newUser.id,
+  //   }, { transaction })
     
-    res.sendStatus(200);
-  })
-
-
-
-  // req.flash('login', 'You are now registered and can log in.')
-  // res.redirect('/user/login')
+  //   res.redirect('/user/login')
+  // })
   // res.redirect(307, '/user/login');
-  
 })
 
 router.get('/dog', (req, res) => {
