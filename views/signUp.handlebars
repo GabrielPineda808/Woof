@@ -13,60 +13,66 @@
         </div>
         <div class="px-5 form-container">
           <h1 class="register-title py-3">Sign Up</h1>
-          <form action='/register' id="userForm" method='POST' class="register-form">
-            <div class="form-group">
-              <input type="text" class="form-control" name="name" placeholder="Full Name">
-            </div>
-            <div class="form-group">
-              <input type="email" class="form-control" name="email" placeholder="Email">
-            </div>
-            <div class="form-group">
-              <input type="password" class="form-control" name="password" placeholder="Password">
-            </div>
-            <div class="form-group">
-              <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password">
-            </div>
-            <div class="form-group">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="gender" id="male" value="male">
-                <label class="form-check-label" for="inlineRadio1">Male</label>
+            <form>
+              <div id="userForm" class="register-form">
+                <div class="form-group">
+                  <input type="text" class="form-control" name="name" placeholder="Full Name">
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control" name="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" name="password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password">
+                </div>
+                <div class="form-group">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="male" value="m">
+                    <label class="form-check-label" for="inlineRadio1">Male</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="female" value="f">
+                    <label class="form-check-label" for="inlineRadio1">Female</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <p class="userRadioValid">Required!</p>
+                  </div>
+                </div>
+                <button id="nextBtn" type="button" class="btn btn-access">Next</button>
+                <br /><br />
+                <p>Or log in <a href="/user/login">here</a></p>
               </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="gender" id="female" value="female">
-                <label class="form-check-label" for="inlineRadio1">Female</label>
+              {{!-- dog form --}}
+              <div id="dogForm" class="register-form">
+                <div class="form-group">
+                  <input type="text" class="form-control" name="name" placeholder="Name">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="breed" placeholder="Breed">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="age" placeholder="Age">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="temperament" placeholder="Temperament">
+                </div>
+                <div class="form-group">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                    <label class="form-check-label" for="inlineRadio1">Male</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                    <label class="form-check-label" for="inlineRadio1">Female</label>
+                  </div>
+                </div>
+                <button id="prevBtn" type="button" class="btn btn-access">Back</button>
+                <button type="button" id="submitFormBtn" class="btn btn-access">Sign Up</button>
               </div>
-            </div>
-            <button id="nextBtn" type="button" class="btn btn-access">Next</button>
-            <br /><br />
-            <p>Or log in <a href="/user/login">here</a></p>
-          </form>
-          {{!-- dog form --}}
-          <form action='/register/dog' id="dogForm" method='POST' class="register-form">
-            <div class="form-group">
-              <input type="text" class="form-control" name="name" placeholder="Name">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" name="breed" placeholder="Breed">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" name="age" placeholder="Age">
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" name="temperament" placeholder="Temperament">
-            </div>
-            <div class="form-group">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="gender" id="male" value="male">
-                <label class="form-check-label" for="inlineRadio1">Male</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="gender" id="female" value="female">
-                <label class="form-check-label" for="inlineRadio1">Female</label>
-              </div>
-            </div>
-            <button id="prevBtn" type="button" class="btn btn-access">Back</button>
-            <button type="submit" class="btn btn-access">Sign Up</button>
-          </form>
+            </form>
+            
 
 
         </div>
