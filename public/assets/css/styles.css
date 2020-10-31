@@ -11,6 +11,12 @@ body {
   font-family: 'Trispace', sans-serif;
 }
 
+.btn-access {
+  background: linear-gradient(to right, #ff105f, #ffad06);
+  color: white;
+  border: 0;
+  opacity: 0.8;
+}
 
 /* ==================================================================== */
 /* homepage */
@@ -103,7 +109,8 @@ a.nav-link:hover {
 }
 
 .sign-up-link {
-  color: #f1bdaf
+  color: #CAF7F9;
+  text-decoration: underline;
 }
 
 /* ==================================================================== */
