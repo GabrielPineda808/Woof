@@ -1,3 +1,5 @@
+
+
 $(document).ready(function() {
   let $nextBtn = $("#nextBtn");
   let $prevBtn = $("#prevBtn");
@@ -8,7 +10,7 @@ $(document).ready(function() {
 
   $nextBtn.on("click", nextForm);
   $prevBtn.on("click", prevForm);
-  $submitFormBtn.con("click", submitForm);
+  // $submitFormBtn.on("click", submitForm);
 
   function nextForm(e) {
     e.preventDefault();
@@ -47,24 +49,4 @@ $(document).ready(function() {
     })
     $formProgress.css('width', '50%');
   }
-
-  function submitForm(e) {
-    let userName = $("#userForm input[name='name']");
-    let userEmail = $("#userForm input[name='email']");
-    let password = $("#userForm input[name='password']");
-    let userGender = $("#userForm :input:checked");
-    let dogName = $("#dogForm input[name='name']");
-    let dogBreed = $("#dogForm input[name='breed']")
-    let dogAge = $("#dogForm input[name='age']")
-    let dogTemp = $("#dogForm input[name='temperament']")
-    let dogGender = $("#dogForm :input:checked")
-
-    
-  }
-
-
-  
-
-
-
 })
