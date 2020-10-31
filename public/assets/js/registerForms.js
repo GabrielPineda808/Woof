@@ -10,18 +10,18 @@ $(document).ready(function() {
 
   function nextForm(e) {
     e.preventDefault();
-    userForm.fadeOut('fast', 0, then => {
-      userForm.css('visibility', 'hidden');
-      userForm.css('right', '45rem');
+    userForm.fadeOut('slow', 0, () => {
+      dogForm.fadeIn('fast', 0);
     });
-    
-    dogForm.css('left', 3rem)
     formProgress.css('width', '100%');
   }
 
   function prevForm(e) {
     e.preventDefault();
-    console.log('hesitated');
+    dogForm.fadeOut('slow', 0, () => {
+      userForm.fadeIn('fast', 0);
+    })
+    formProgress.css('width', '50%');
   }
 
 

@@ -173,17 +173,20 @@ a.nav-link:hover {
 
 .form-container {
   position: relative;
-
 }
 
 .register-form {
   position: absolute;
-  width: 80%;
-  /* transition: 2s; */
+  width: 60%;
+}
+
+#userForm {
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
 #dogForm {
-  right: 45rem;
-  transition: 2s;
-  /* visibility: hidden; */
+  display: none;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
