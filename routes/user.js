@@ -11,7 +11,7 @@ router.get('/', ensureAuthenticated, (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-  res.render('login');
+  res.render('login', { success: req.flash('login') });
 })
 
 // router.get('/login', forwardAuthenticated, (req, res) => {
