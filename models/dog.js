@@ -28,11 +28,6 @@ module.exports = function (sequelize, DataTypes) {
     bio: {
       type: DataTypes.STRING,
       allowNull: true
-    },
-    // this corresponds to this dog's owner
-    ownerID: {
-      type: DataTypes.INTEGER,
-      allowNull: false
     }
   });
   // Dogs go to user

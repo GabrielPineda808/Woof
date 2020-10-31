@@ -11,14 +11,6 @@ module.exports = function (sequelize, DataTypes) {
         rating: {
             type: DataTypes.INTEGER,
             allowNull: false
-        },
-        dogId: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        writerId: {
-            type: DataTypes.INTEGER,
-            allowNull: false
         }
     });
     // dog reviews go to dog

@@ -7,14 +7,6 @@ module.exports = function (sequelize, DataTypes) {
         rating: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        ownerId: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        writerId: {
-            type: DataTypes.INTEGER,
-            allowNull: false
         }
     });
     // UserReview goes to User (poster)
