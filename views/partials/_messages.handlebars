@@ -4,3 +4,10 @@
   {{ success }}
 </div>
 {{/if }}
+
+{{#if logout }}
+<div class="alert alert-dismissible alert-success logout-alert">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  {{ logout }}
+</div>
+{{/if }}
