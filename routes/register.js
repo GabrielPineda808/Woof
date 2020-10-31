@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-// const db = require('../models');
+const db = require('../models');
 const formValidate = require('../public/assets/js/formValidate');
 const { forwardAuthenticated } = require('../config/middleware/auth');
 
@@ -12,20 +12,19 @@ router.get('/', forwardAuthenticated, (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-  // TODO: change model 
-  const { name, email, password, confirmPassword } = req.body;
-  let checkUser = await db.User.findOne({ where: { email: req.body.email }})
+  await db.sequelize.transaction(async (transaction) => {
+    let newUser = await db.user.create(req.body.user, { transaction });
+    // return newUser
+    res.sendStatus(200);
+    console.log(newUser);
+  })
 
-  let errors = await formValidate(name, email, password, confirmPassword, checkUser);
+
+
+  // req.flash('login', 'You are now registered and can log in.')
+  // res.redirect('/user/login')
+  // res.redirect(307, '/user/login');
   
-  if (errors.errors.length > 0) {
-    res.render('register', errors);
-  } else {
-    await db.User.create(req.body)
-    req.flash('login', 'You are now registered and can log in.')
-    res.redirect('/user/login')
-    // res.redirect(307, '/user/login');
-  }
 })
 
 router.get('/dog', (req, res) => {

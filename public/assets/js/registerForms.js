@@ -65,7 +65,8 @@ $(document).ready(function() {
       name: userName.val().trim(),
       email: userEmail.val().trim(),
       password: password.val().trim(),
-      gender: userGender.val()
+      gender: userGender.val(),
+      bio: null,
     }
 
     let dog = {
@@ -74,14 +75,15 @@ $(document).ready(function() {
       age: dogAge.val().trim(),
       gender: dogGender.val(),
       temperament:dogTemp.val().trim(),
-      bio: null
+      bio: null,
     }
 
     console.log({user, dog});
     let newRegister = await $.ajax('/register', {
       type: 'POST',
-      data: { user, dog }
+      data: { user, dog },
     })
+    console.log(newRegister);
 
   }
 
