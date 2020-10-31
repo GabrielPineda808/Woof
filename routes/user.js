@@ -7,7 +7,8 @@ const { forwardAuthenticated, ensureAuthenticated } = require('../config/middlew
 
 router.get('/', ensureAuthenticated, (req, res) => {
   // TODO: replace this view with user profile
-  res.sendStatus(200);
+  console.log(req.user);
+  res.render('userprofile');
 })
 
 router.get('/login', (req, res) => {
