@@ -124,13 +124,8 @@ a.nav-link:hover {
   opacity: 0.8;
 }
 
-.register-container {
-  padding: 3rem 4.5rem;
-}
-
 .register-title {
   text-align: center;
-  padding-bottom: 2rem;
   font-weight: 500;
 }
 
@@ -144,3 +139,51 @@ a.nav-link:hover {
   font-weight: 200;
 }
 
+.step-row {
+  width: 100%;
+  height: 2rem;
+  margin: 0;
+  /* display: flex; */
+  align-items: center;
+  box-shadow: 0 -1px 5px -1px #000;
+  position: relative;
+  overflow: hidden;
+}
+
+#progress {
+  background: linear-gradient(to right, #ff105f, #ffad06);
+  height: 2rem;
+  width: 50%;
+  position: absolute;
+  transition: 1s;
+}
+
+#progress::after {
+  /* background: linear-gradient(to right, #ff105f, #ffad06); */
+  content: '';
+  height: 0;
+  width: 0;
+  border-top: 1rem solid transparent;
+  border-bottom: 1rem solid transparent;
+  position: absolute;
+  right: -1rem;
+  top: 0;
+  border-left: 1rem solid #ffad06;
+}
+
+.form-container {
+  position: relative;
+
+}
+
+.register-form {
+  position: absolute;
+  width: 80%;
+  /* transition: 2s; */
+}
+
+#dogForm {
+  right: 45rem;
+  transition: 2s;
+  /* visibility: hidden; */
+}
