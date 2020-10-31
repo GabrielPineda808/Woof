@@ -74,7 +74,7 @@ $(document).ready(function() {
       breed: dogBreed.val().trim(),
       age: dogAge.val().trim(),
       gender: dogGender.val(),
-      temperament:dogTemp.val().trim(),
+      temperament: dogTemp.val().trim(),
       bio: null,
     }
 

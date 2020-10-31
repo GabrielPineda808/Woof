@@ -14,9 +14,13 @@ router.get('/', forwardAuthenticated, (req, res) => {
 router.post('/', async (req, res) => {
   await db.sequelize.transaction(async (transaction) => {
     let newUser = await db.user.create(req.body.user, { transaction });
-    // return newUser
+    
+    await db.dog.create({ 
+      ...req.body.dog, 
+      userId: newUser.id,
+    }, { transaction })
+    
     res.sendStatus(200);
-    console.log(newUser);
   })
 
 
