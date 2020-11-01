@@ -1,85 +1,80 @@
-  {{> _navbar}}
-  <div class="register-page-contain h-100">
-
+{{> _navbar}}
+<div class="register-page-contain h-100">
+  <div class="row h-100">
+    <img class="col-lg-8 register-bg px-0" src="/assets/images/login_background.jpg"/>
   
-    <div class="row h-100">
-      <img class="col-lg-8 register-bg px-0" src="/assets/images/login_background.jpg"/>
-    
-      <div class="col-lg-4 px-0">
-        <div class="step-row row text-center">
-          <div id="progress"></div>
-          <div class="step-col col-6">User</div>
-          <div class="step-col col-6">Pet</div>
-        </div>
-        <div class="px-5 form-container">
-          <h1 class="register-title py-3">Sign Up</h1>
-            <form action="/register" method="POST" >
-              <div id="userForm" class="register-form">
-                {{> _messages}}
-                <div class="form-group">
-                  <input type="text" class="form-control" name="uName" placeholder="Full Name">
-                </div>
-                <div class="form-group">
-                  <input type="email" class="form-control" name="email" placeholder="Email">
-                </div>
-                <div class="form-group">
-                  <input type="password" class="form-control" name="password" placeholder="Password">
-                </div>
-                <div class="form-group">
-                  <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password">
-                </div>
-                <div class="form-group">
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="uGender" id="male" value="m">
-                    <label class="form-check-label" for="inlineRadio1">Male</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="uGender" id="female" value="f">
-                    <label class="form-check-label" for="inlineRadio1">Female</label>
-                  </div>
-                </div>
-                <button id="nextBtn" type="button" class="btn btn-access">Next</button>
-                <br /><br />
-                <p>Or log in <a href="/user/login">here</a></p>
-              </div>
-              {{!-- dog form --}}
-              <div id="dogForm" class="register-form">
-                {{> _messagesDogReg}}
-                <div class="form-group">
-                  <input type="text" class="form-control" name="dName" placeholder="Name">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" name="breed" placeholder="Breed">
-                </div>
-                <div class="form-group">
-                  <input type="number" class="form-control" name="age" placeholder="Age">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" name="temperament" placeholder="Temperament">
-                </div>
-                <div class="form-group">
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="dGender" id="male" value="m">
-                    <label class="form-check-label" for="inlineRadio1">Male</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="dGender" id="female" value="f">
-                    <label class="form-check-label" for="inlineRadio1">Female</label>
-                  </div>
-                </div>
-                <button id="prevBtn" type="button" class="btn btn-access">Back</button>
-                <button type="submit" id="submitFormBtn" class="btn btn-access">Sign Up</button>
-              </div>
-            </form>
-            
-
-
-        </div>
-
+    <div class="col-lg-4 px-0">
+      <div class="step-row row text-center">
+        <div id="progress"></div>
+        <div class="step-col col-6">User</div>
+        <div class="step-col col-6">Pet</div>
       </div>
-
+      <div class="px-5 form-container">
+        <h1 class="register-title py-3">Sign Up</h1>
+          <form action="/register" method="POST" >
+            {{!-- user form --}}
+            <div id="userForm" class="register-form">
+              {{> _messages}}
+              <div class="form-group">
+                <input type="text" class="form-control" name="uName" placeholder="Full Name">
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" name="email" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" name="password" placeholder="Password">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password">
+              </div>
+              <div class="form-group">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="uGender" id="male" value="m">
+                  <label class="form-check-label" for="inlineRadio1">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="uGender" id="female" value="f">
+                  <label class="form-check-label" for="inlineRadio1">Female</label>
+                </div>
+              </div>
+              <button id="nextBtn" type="button" class="btn btn-access">Next</button>
+              <br /><br />
+              <p>Or log in <a href="/user/login">here</a></p>
+            </div>
+            {{!-- dog form --}}
+            <div id="dogForm" class="register-form">
+              {{> _messagesDogReg}}
+              <div class="form-group">
+                <input type="text" class="form-control" name="dName" placeholder="Name">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="breed" placeholder="Breed">
+              </div>
+              <div class="form-group">
+                <input type="number" class="form-control" name="age" placeholder="Age">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="temperament" placeholder="Temperament">
+              </div>
+              <div class="form-group">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="dGender" id="male" value="m">
+                  <label class="form-check-label" for="inlineRadio1">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="dGender" id="female" value="f">
+                  <label class="form-check-label" for="inlineRadio1">Female</label>
+                </div>
+              </div>
+              <button id="prevBtn" type="button" class="btn btn-access">Back</button>
+              <button type="submit" id="submitFormBtn" class="btn btn-access">Sign Up</button>
+            </div>
+          </form>
+      </div>
     </div>
+
   </div>
+</div>
 
 
 
