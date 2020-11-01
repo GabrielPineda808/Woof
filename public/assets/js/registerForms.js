@@ -6,9 +6,9 @@ $(document).ready(function() {
   let $userForm = $("#userForm");
   let $dogForm = $("#dogForm");
   let $formProgress = $("#progress");
-  let $signUpClose = $(".signUpClose");
+  let $close = $(".close");
 
-  $signUpClose.on("click", () => {
+  $close.on("click", function() {
     $(this).parent().hide();
   })
 
@@ -28,8 +28,9 @@ $(document).ready(function() {
     } else if (!passwordMatch($password, $confirmPassword)) {
       let $passwordMatch = $("#passwordMatch");
       $passwordMatch.show();
-    } else if (!passwordRegex) {
-      
+    } else if (!passwordRegex($password)) {
+      let $passwordRegx = $("#passwordRegx");
+      $passwordRegx.show();
     } else {
       $userForm.fadeOut('slow', 0, () => {
         $dogForm.fadeIn('fast', 0);
@@ -50,6 +51,7 @@ $(document).ready(function() {
   }
 
   function passwordRegex(password) {
-
+    const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$/
+    return regex.test(password);
   }
 })
