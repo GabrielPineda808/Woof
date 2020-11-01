@@ -31,6 +31,12 @@ $(document).ready(function() {
     $formProgress.css('width', '50%');
   }
 
+  $("form").on("submit", function(e) {
+    if (dogValidation()) {
+      e.preventDefault();
+    }
+  })
+
   function userValidation() {
     let $userName = $("#userForm input[name='uName']").val().trim();
     let $userEmail = $("#userForm input[name='email']").val().trim();
@@ -60,5 +66,13 @@ $(document).ready(function() {
   function passwordRegex(password) {
     const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$/
     return regex.test(password);
+  }
+
+  function dogValidation() {
+    let $dogName = $("#dogForm input[name='dName']").val().trim();
+    let $breed = $("#dogForm input[name='breed']").val().trim();
+    let $age = $("#dogForm input[name='age']").val().trim();
+    let $temperament = $("#dogForm input[name='temperament']").val().trim();
+    let $dogGender = $("#dogForm :input:checked").val();
   }
 })
