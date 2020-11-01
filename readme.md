@@ -20,7 +20,7 @@ A app for dogs and owners to meet nearby dogs and owners for a playdate.
 - Javascript                  - Connect-Flash
 - Jquery                      - Dot-Env
 - Mysql                       - Heroku
-- Bcrypt
+- Bcrypt                      - Handlebars.js
 
 ```
 ## Staging Link:
@@ -29,6 +29,6 @@ https://bbarello.github.io/woof/
 
 ## Screenshot:
 
-![Woof](.gif)
+![Woof](https://user-images.githubusercontent.com/13710183/97793210-1376b580-1ba6-11eb-9831-4e399ca5a426.png)
 
 
