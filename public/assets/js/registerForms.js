@@ -20,12 +20,13 @@ $(document).ready(function() {
     });
     $formProgress.css('width', '100%');
 
-    // let userName = $("#userForm input[name='name']");
-    // let userEmail = $("#userForm input[name='email']");
-    // let password = $("#userForm input[name='password']");
-    // let confirmPassword = $("#userForm input[name='confirmPassword']");
-    // let userGender = $("#userForm :input:checked");
+    let userName = $("#userForm input[name='uName']").val().trim();
+    let userEmail = $("#userForm input[name='email']").val().trim();
+    let password = $("#userForm input[name='password']").val();
+    let confirmPassword = $("#userForm input[name='confirmPassword']").val();
+    let userGender = $("#userForm :input:checked").val();
 
+    console.log(userGender);
     // let userFormArr = [userName, userEmail, password, confirmPassword];
 
     // userFormArr.forEach(elem => {

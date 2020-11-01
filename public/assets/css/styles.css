@@ -18,6 +18,10 @@ body {
   opacity: 0.8;
 }
 
+input:focus::placeholder {
+  color: transparent;
+}
+
 /* ==================================================================== */
 /* homepage */
 
