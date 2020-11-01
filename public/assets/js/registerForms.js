@@ -71,8 +71,16 @@ $(document).ready(function() {
   function dogValidation() {
     let $dogName = $("#dogForm input[name='dName']").val().trim();
     let $breed = $("#dogForm input[name='breed']").val().trim();
-    let $age = $("#dogForm input[name='age']").val().trim();
+    let $age = $("#dogForm input[name='age']").val();
     let $temperament = $("#dogForm input[name='temperament']").val().trim();
     let $dogGender = $("#dogForm :input:checked").val();
+
+    if (!$dogName || !$breed || !$age || !$temperament || !$dogGender) {
+      let $noBlanksAlert = $("#noBlanksDogs");
+      $noBlanksAlert.show();
+    } else {
+      return false
+    }
+    return true;
   }
 })

@@ -199,7 +199,7 @@ a.nav-link:hover {
   color: red;
 }
 
-#noBlanks, #passwordMatch, #passwordRegx {
+#noBlanks, #passwordMatch, #passwordRegx, #noBlanksDogs {
   display: none;
 }
 

@@ -13,9 +13,9 @@
         </div>
         <div class="px-5 form-container">
           <h1 class="register-title py-3">Sign Up</h1>
-          {{> _messages}}
             <form action="/register" method="POST" >
               <div id="userForm" class="register-form">
+                {{> _messages}}
                 <div class="form-group">
                   <input type="text" class="form-control" name="uName" placeholder="Full Name">
                 </div>
@@ -44,6 +44,7 @@
               </div>
               {{!-- dog form --}}
               <div id="dogForm" class="register-form">
+                {{> _messagesDogReg}}
                 <div class="form-group">
                   <input type="text" class="form-control" name="dName" placeholder="Name">
                 </div>
@@ -51,7 +52,7 @@
                   <input type="text" class="form-control" name="breed" placeholder="Breed">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" name="age" placeholder="Age">
+                  <input type="number" class="form-control" name="age" placeholder="Age">
                 </div>
                 <div class="form-group">
                   <input type="text" class="form-control" name="temperament" placeholder="Temperament">
