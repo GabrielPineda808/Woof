@@ -6,20 +6,16 @@ $(document).ready(function() {
   let $userForm = $("#userForm");
   let $dogForm = $("#dogForm");
   let $formProgress = $("#progress");
-  let $submitFormBtn = $("#submitFormBtn");
-  let $signUpClose = $("#signUpClose");
+  let $signUpClose = $(".signUpClose");
 
   $signUpClose.on("click", () => {
-    let $alertField = $(".alert");
-    $alertField.hide();
+    $(this).parent().hide();
   })
 
   $nextBtn.on("click", nextForm);
   $prevBtn.on("click", prevForm);
-  // $submitFormBtn.on("click", submitForm);
 
-  function nextForm(e) {
-    // e.preventDefault();
+  function nextForm() {
     let $userName = $("#userForm input[name='uName']").val().trim();
     let $userEmail = $("#userForm input[name='email']").val().trim();
     let $password = $("#userForm input[name='password']").val();
@@ -29,6 +25,11 @@ $(document).ready(function() {
     if (!$userName || !$userEmail || !$password || !$confirmPassword || !$userGender) {
       let $noBlanksAlert = $("#noBlanks");
       $noBlanksAlert.show();
+    } else if (!passwordMatch($password, $confirmPassword)) {
+      let $passwordMatch = $("#passwordMatch");
+      $passwordMatch.show();
+    } else if (!passwordRegex) {
+      
     } else {
       $userForm.fadeOut('slow', 0, () => {
         $dogForm.fadeIn('fast', 0);
@@ -37,11 +38,18 @@ $(document).ready(function() {
     }
   }
 
-  function prevForm(e) {
-    e.preventDefault();
+  function prevForm() {
     $dogForm.fadeOut('slow', 0, () => {
       $userForm.fadeIn('fast', 0);
     })
     $formProgress.css('width', '50%');
+  }
+
+  function passwordMatch(password, confirmPassword) {
+    return password === confirmPassword;
+  }
+
+  function passwordRegex(password) {
+
   }
 })
