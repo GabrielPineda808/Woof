@@ -1,0 +1,12 @@
+{{> _navbar}}
+{{!-- title here --}}
+<h1>Dog Reviews</h1>
+{{!-- dog name here --}}
+<h2>{{Dog.name}}</h2>
+{{!-- dog image here --}}
+
+{{!--  cards for each review  --}}
+{{#each DogReview}}
+    {{>DogReview/_dogReviewCard}}
+    <br>
+{{/each}}
