@@ -3,9 +3,9 @@ const router = express.Router();
 
 // routes for searches
 
-router.get('/search', (req, res) => {
+router.get('/', (req, res) => {
   // TODO: replace this view with search page
-  res.sendStatus(200);
+  res.render('search');
 })
 
 module.exports = router;
