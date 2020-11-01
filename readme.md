@@ -24,8 +24,7 @@ A app for dogs and owners to meet nearby dogs and owners for a playdate.
 
 ```
 ## Staging Link:
-https://bbarello.github.io/woof/
-
+https://woof-23.herokuapp.com/
 
 ## Screenshot:
 
