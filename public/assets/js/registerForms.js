@@ -6,47 +6,85 @@ $(document).ready(function() {
   let $userForm = $("#userForm");
   let $dogForm = $("#dogForm");
   let $formProgress = $("#progress");
-  let $submitFormBtn = $("#submitFormBtn");
+  let $close = $(".close");
+
+  $close.on("click", function() {
+    $(this).parent().hide();
+  })
 
   $nextBtn.on("click", nextForm);
   $prevBtn.on("click", prevForm);
-  // $submitFormBtn.on("click", submitForm);
 
-  function nextForm(e) {
-    e.preventDefault();
-
-    $userForm.fadeOut('slow', 0, () => {
-      $dogForm.fadeIn('fast', 0);
-    });
-    $formProgress.css('width', '100%');
-
-    // let userName = $("#userForm input[name='name']");
-    // let userEmail = $("#userForm input[name='email']");
-    // let password = $("#userForm input[name='password']");
-    // let confirmPassword = $("#userForm input[name='confirmPassword']");
-    // let userGender = $("#userForm :input:checked");
-
-    // let userFormArr = [userName, userEmail, password, confirmPassword];
-
-    // userFormArr.forEach(elem => {
-    //   if (!elem.val()) {
-    //     elem.addClass('inputValid');
-    //   }
-    // })
-    // console.log(genderRadio);
-    // if (genderRadio.length === 0) {
-    //   let $userRadioValid = $(".userRadioValid");
-    //   $userRadioValid.css('display', 'inline-block')
-    // } else {
-
-    // };
+  function nextForm() {
+    if (userValidation()) {
+      $userForm.fadeOut('slow', 0, () => {
+        $dogForm.fadeIn('fast', 0);
+      });
+      $formProgress.css('width', '100%');
+    }
   }
 
-  function prevForm(e) {
-    e.preventDefault();
+  function prevForm() {
     $dogForm.fadeOut('slow', 0, () => {
       $userForm.fadeIn('fast', 0);
     })
     $formProgress.css('width', '50%');
+  }
+
+  $("form").on("submit", function(e) {
+    if (dogValidation()) {
+      e.preventDefault();
+    }
+  })
+
+  function userValidation() {
+    let $userName = $("#userForm input[name='uName']").val().trim();
+    let $userEmail = $("#userForm input[name='email']").val().trim();
+    let $password = $("#userForm input[name='password']").val();
+    let $confirmPassword = $("#userForm input[name='confirmPassword']").val();
+    let $userGender = $("#userForm :input:checked").val();
+
+    if (!$userName || !$userEmail || !$password || !$confirmPassword || !$userGender) {
+      let $noBlanksAlert = $("#noBlanks");
+      $noBlanksAlert.show();
+    } else if (!passwordMatch($password, $confirmPassword)) {
+      let $passwordMatch = $("#passwordMatch");
+      $passwordMatch.show();
+    } else if (!passwordRegex($password)) {
+      let $passwordRegx = $("#passwordRegx");
+      $passwordRegx.show();
+    } else {
+      return true;
+    }
+    return false
+  }
+
+  function passwordMatch(password, confirmPassword) {
+    return password === confirmPassword;
+  }
+
+  function passwordRegex(password) {
+    const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,}$/
+    return regex.test(password);
+  }
+
+  function dogValidation() {
+    let $dogName = $("#dogForm input[name='dName']").val().trim();
+    let $breed = $("#dogForm input[name='breed']").val().trim();
+    let $age = $("#dogForm input[name='age']").val();
+    let $temperament = $("#dogForm input[name='temperament']").val().trim();
+    let $dogGender = $("#dogForm :input:checked").val();
+
+    if (!$dogName || !$breed || !$age || !$temperament || !$dogGender) {
+      let $noBlanksAlert = $("#noBlanksDogs");
+      $noBlanksAlert.show();
+    } else {
+      return false
+    }
+    return true;
+  }
+
+  if ( window.history.replaceState ) {
+    window.history.replaceState( null, null, window.location.href );
   }
 })

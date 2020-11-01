@@ -22,7 +22,6 @@
   "devDependencies": {
     "cli": "^1.0.1",
     "nodemon": "^2.0.6",
-    "sequelize": "^6.3.5",
     "sequelize-cli": "^6.2.0"
   },
   "dependencies": {
@@ -34,6 +33,7 @@
     "express-sesssion": "^1.15.5",
     "mysql2": "^2.2.5",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "sequelize": "^6.3.5"
   }
 }

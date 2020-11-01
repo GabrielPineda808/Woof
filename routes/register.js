@@ -31,16 +31,19 @@ router.post('/', async (req, res) => {
   }
 
   await db.sequelize.transaction(async (transaction) => {
-    let userInsert = await db.user.create(newUser, { transaction });
-    
-    await db.dog.create({ 
-      ...newDog, 
-      userId: userInsert.id,
-    }, { transaction })
+    let checkUser = await db.user.findOne({ where: { email: newUser.email } })
+    if (checkUser) {
+      res.render('signUp', { userExists: 'User already exists.' });
+    } else {
+      let userInsert = await db.user.create(newUser, { transaction });
+      await db.dog.create({ 
+        ...newDog, 
+        userId: userInsert.id,
+      }, { transaction })
+      req.flash('login', 'You are now registered and can log in.')
+      res.redirect('/user/login')
+    }
   })
-  
-  req.flash('login', 'You are now registered and can log in.')
-  res.redirect('/user/login')
   // res.redirect(307, '/user/login');
 })
 

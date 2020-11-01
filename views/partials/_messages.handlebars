@@ -11,3 +11,26 @@
   {{ logout }}
 </div>
 {{/if }}
+
+{{#if userExists }}
+<div class="alert alert-dismissible alert-danger logout-alert">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  {{ userExists }}
+</div>
+{{/if}}
+
+<div id="noBlanks" class="alert alert-danger noBlanks">
+  <button type="button" class="close">&times;</button>
+  Please fill out all fields.
+</div>
+
+<div id="passwordMatch" class="alert alert-danger noBlanks">
+  <button type="button" class="close">&times;</button>
+  Passwords do not match.
+</div>
+
+<div id="passwordRegx" class="alert alert-danger noBlanks">
+  <button type="button" class="close">&times;</button>
+  Password must be 6 characters long and include: lowercase letters, uppercase letters, and numbers.
+</div>
+

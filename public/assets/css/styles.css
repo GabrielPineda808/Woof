@@ -18,6 +18,10 @@ body {
   opacity: 0.8;
 }
 
+input:focus::placeholder {
+  color: transparent;
+}
+
 /* ==================================================================== */
 /* homepage */
 
@@ -195,9 +199,8 @@ a.nav-link:hover {
   color: red;
 }
 
-.inputValid {
-  border-radius: 5px;
-  border: 0.5px solid red;
+#noBlanks, #passwordMatch, #passwordRegx, #noBlanksDogs {
+  display: none;
 }
 
 /* ==================================================================== */
