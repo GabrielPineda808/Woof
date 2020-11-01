@@ -16,6 +16,22 @@ $(document).ready(function() {
   $prevBtn.on("click", prevForm);
 
   function nextForm() {
+    if (userValidation()) {
+      $userForm.fadeOut('slow', 0, () => {
+        $dogForm.fadeIn('fast', 0);
+      });
+      $formProgress.css('width', '100%');
+    }
+  }
+
+  function prevForm() {
+    $dogForm.fadeOut('slow', 0, () => {
+      $userForm.fadeIn('fast', 0);
+    })
+    $formProgress.css('width', '50%');
+  }
+
+  function userValidation() {
     let $userName = $("#userForm input[name='uName']").val().trim();
     let $userEmail = $("#userForm input[name='email']").val().trim();
     let $password = $("#userForm input[name='password']").val();
@@ -32,18 +48,9 @@ $(document).ready(function() {
       let $passwordRegx = $("#passwordRegx");
       $passwordRegx.show();
     } else {
-      $userForm.fadeOut('slow', 0, () => {
-        $dogForm.fadeIn('fast', 0);
-      });
-      $formProgress.css('width', '100%');
+      return true;
     }
-  }
-
-  function prevForm() {
-    $dogForm.fadeOut('slow', 0, () => {
-      $userForm.fadeIn('fast', 0);
-    })
-    $formProgress.css('width', '50%');
+    return false
   }
 
   function passwordMatch(password, confirmPassword) {
