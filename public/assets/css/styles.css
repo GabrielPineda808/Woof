@@ -199,9 +199,8 @@ a.nav-link:hover {
   color: red;
 }
 
-.inputValid {
-  border-radius: 5px;
-  border: 0.5px solid red;
+.noBlanks {
+  display: none;
 }
 
 /* ==================================================================== */
