@@ -2,7 +2,7 @@
 <div class="wrapper">
 
   <div class="container">
-    <h2>{{name}}</h2><br>
+    <h1>{{name}}</h1><br>
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
       <li class="nav-item">
@@ -14,38 +14,32 @@
       <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#menu2">Reviews</a>
       </li>
+      {{#if userEdit}}
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu3">Account</a>
+      </li>
+      {{/if}}
     </ul>
 
     <!-- Tab panes -->
     <div class="tab-content">
       
       <div id="home" class="container tab-pane active"><br>
-        <h2> Information
-          {{#if userEdit}}
-            <small>
-            <span class="btn-group">
-              <button class="btn btn-mini" id="userEdit">Edit</button>
-            </span>
-          </small>
-          {{/if}}
-        </h2>
+        <h2 class="profile-heading"> Information</h2>
+        {{#if userEdit}}
+        <button class="btn btn-access" id="userEdit">Edit</button>
+        {{/if}}
         <p>{{bio}}</p>
         <p>Contact me at {{email}}</p>
       </div>
       
       <div id="menu1" class="container tab-pane fade"><br>
-        <h2> Pets
-          {{#if userEdit}}
-            <small>
-            <span class="btn-group">
-              <button class="btn btn-mini" id="dogEdit">Edit</button>
-            </span>
-          </small>
-          {{/if}}
-          
-        </h2>
+        <h2 class="profile-heading"> Pets</h3>
+        {{#if userEdit}}
+          <button class="btn btn-access" id="dogEdit">Edit</button>
+        {{/if}}
         {{#each dog}}
-          <h4><strong>{{this.name}}</strong> </h4>
+          <h4><strong>{{this.name}}</strong></h4>
           <p><strong>Breed : </strong> {{this.breed}}</p>
           <p><strong>Age :</strong> {{this.age}}</p>
           <p><strong>Gender :</strong> {{this.gender}}</p>
@@ -56,7 +50,7 @@
       </div>
       
       <div id="menu2" class="container tab-pane fade"><br>
-        <h2> Reviews</h2>
+        <h2 class="profile-heading"> Reviews</h2>
         <div class="container">
           <div class="card">
             <div class="card-body">
@@ -84,6 +78,10 @@
           {{/unless}}
           </div>
         </div>
+      </div>
+
+      <div id="menu3" class="container tab-pane fade"><br>
+        <button class="btn btn-access" id="userEdit">Delete Account</button>
       </div>
 
     </div>

@@ -212,3 +212,14 @@ a.nav-link:hover {
   margin-top: 15%;
 }
 
+/* ==================================================================== */
+/* profiles */
+.profile-heading {
+  font-weight: 600;
+  text-decoration: underline;
+  display: inline-flex;
+}
+
+.tab-pane > button {
+  vertical-align: top;
+}
