@@ -33,18 +33,11 @@
       <div class="col-md-3">
         <h3 class="mb-3">Search Dogs</h3>
         <form action='/api/search' id="dogsearch" method='POST' class="search-form">
-          <!-- select available to breed-->
-          <div class="form-group">
-            <select class="form-control" id="available-to-breed">
-              <option>Available to Breed</option>
-              <option>Not Available to Breed</option>
-              
-            </select>
-          </div>
+
           <!-- select breed of dog-->
           <div class="form-group">
             <select name="breed" class="form-control" id="breed">
-              <option>- Any Breed -</option>
+              <option value=''>- Any Breed -</option>
               {{#each breeds }}
               <option>{{ this.breed }}</option>
               {{/each}}
@@ -53,7 +46,7 @@
           <!-- select age of dog-->
           <div class="form-group">
             <select name="age" class="form-control" id="age">
-              <option>- Any Age -</option>
+              <option value=''>- Any Age -</option>
               {{#each ages }}
               <option>{{ this.age }}</option>
               {{/each}}
@@ -62,23 +55,14 @@
 
           <!-- select temperment of dog-->
           <div class="form-group">
-            <select name="temperament" class="form-control" id="temperment">
-              <option>- Any Temperment -</option>
+            <select name="temperament" class="form-control" id="temperament">
+              <option value=''>- Any Temperament -</option>
               {{#each temperaments }}
               <option>{{ this.temperament }}</option>
               {{/each}}
             </select>       
           </div>
-          <!-- select with milage of dog-->
-          <div class="form-group">
-            <select name="within-miles" class="form-control" id="within-miles">
-              <option>- Within Any Miles -</option>
-              <option>Within 25 Miles</option>
-              <option>Within 26-50 Miles</option>
-              <option>Within 51-99 Miles</option>
-              <option>Within 100-500 Miles</option>
-            </select>       
-          </div>
+
           <!-- select gender of dog -->
           <div class="form-group">
             <div class="form-check form-check-inline">

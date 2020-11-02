@@ -5,6 +5,25 @@ const db = require('../models');
 // routes for searches
 
 router.get('/', ensureAuthenticated, async (req, res) => {
+  let { breeds, ages, temperaments } = await getSearchOptions();
+  res.render('search', { breeds, ages, temperaments });
+})
+
+router.post('/', async (req, res) => {
+  let { breeds, ages, temperaments } = await getSearchOptions();
+  let searchParams = req.body;
+  let searchObj = {userId: { [db.Sequelize.Op.ne]: null }};
+  for (const key in searchParams) {
+    if (searchParams[key] !== '') {
+      searchObj[key] = searchParams[key];
+    }
+  }
+  console.log(searchObj);
+  let dogResults = await db.dog.findAll({ where: searchObj })
+  res.render('search', { dogResults, breeds, ages, temperaments });
+})
+
+async function getSearchOptions() {
   let breeds = await db.dog.findAll({where: {userId: { [db.Sequelize.Op.ne]: null }}, attributes: [
     [db.Sequelize.fn('DISTINCT', db.Sequelize.col('breed')), 'breed']
   ]})
@@ -14,19 +33,7 @@ router.get('/', ensureAuthenticated, async (req, res) => {
   let temperaments = await db.dog.findAll({where: {userId: {[db.Sequelize.Op.ne]: null }}, attributes: [
     [db.Sequelize.fn('DISTINCT', db.Sequelize.col('temperament')), 'temperament']
   ]})
-  res.render('search', { breeds, ages, temperaments });
-})
-
-router.post('/', async (req, res) => {
-  console.log(req.body);
-  let dogResults = await db.dog.findAll({ where: {
-    breed: req.body.breed,
-    age: req.body.age,
-    temperament: req.body.temperament,
-    gender: req.body.gender,
-    userId: { [db.Sequelize.Op.ne]: null }
-  }})
-  res.render('search', { dogResults });
-})
+  return { breeds, ages, temperaments }
+}
 
 module.exports = router;
