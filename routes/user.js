@@ -11,10 +11,18 @@ router.get('/', ensureAuthenticated, async (req, res) => {
    const dog = await db.dog.findAll({where :{
     userId: req.user.id
   }});
-  console.log(typeof dog)
-  console.log(dog);
-  console.log(req.user);
-  res.render('userprofile', {email, name, gender, bio, dog});
+  let userEdit;
+  res.render('userprofile', {email, name, gender, bio, dog, userEdit: true});
+})
+
+router.get('/edit', (req, res)=>{
+  const { email , name , bio } = req.user;
+  res.render("userEdit", {email, name, bio} )
+})
+
+router.put('/edit', async (req, res)=>{
+  let editUser = db.user.update(req.body, {where: {email: req.body.email}});
+  res.json(editUser)
 })
 
 router.get('/login', (req, res) => {
@@ -39,9 +47,19 @@ router.get('/logout', (req, res) => {
   res.redirect('/user/login')
 })
 
-router.get('/:ownerName/:dogId', (req, res) => {
+router.get('/:userId', async ( req, res) => {
   // TODO: replace this view with dog profile
-  res.sendStatus(200);
+  let userID = req.params.userId;
+
+  const user = await db.user.findOne({where :{
+    id: userID
+  }})
+
+  const dog = await db.dog.findAll({where :{
+    userId: userID
+  }});
+
+  res.render('userprofile', {email: user.email , name: user.name, gender: user.gender, bio : user.bio, dog});
 })
 
 module.exports = router;
