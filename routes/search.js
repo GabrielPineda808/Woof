@@ -5,11 +5,15 @@ const db = require('../models');
 // routes for searches
 
 router.get('/', ensureAuthenticated, async (req, res) => {
-  // TODO: replace this view with search page
-  let breeds = await db.dog.aggregate('breed', 'DISTINCT', { plain: false });
-  let ages =  await db.dog.aggregate('age', 'DISTINCT', { plain: false });
-  let temperaments =  await db.dog.aggregate('temperament', 'DISTINCT', { plain: false });
-  // console.log(breeds, ages, temperaments);
+  let breeds = await db.dog.findAll({where: {userId: { [db.Sequelize.Op.ne]: null }}, attributes: [
+    [db.Sequelize.fn('DISTINCT', db.Sequelize.col('breed')), 'breed']
+  ]})
+  let ages = await db.dog.findAll({where: {userId: {[db.Sequelize.Op.ne]: null }}, attributes: [
+    [db.Sequelize.fn('DISTINCT', db.Sequelize.col('age')), 'age']
+  ]})
+  let temperaments = await db.dog.findAll({where: {userId: {[db.Sequelize.Op.ne]: null }}, attributes: [
+    [db.Sequelize.fn('DISTINCT', db.Sequelize.col('temperament')), 'temperament']
+  ]})
   res.render('search', { breeds, ages, temperaments });
 })
 
@@ -19,9 +23,9 @@ router.post('/', async (req, res) => {
     breed: req.body.breed,
     age: req.body.age,
     temperament: req.body.temperament,
-    gender: req.body.gender
+    gender: req.body.gender,
+    userId: { [db.Sequelize.Op.ne]: null }
   }})
-  console.log(dogResults);
   res.render('search', { dogResults });
 })
 

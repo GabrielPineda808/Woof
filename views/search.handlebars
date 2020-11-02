@@ -46,7 +46,7 @@
             <select name="breed" class="form-control" id="breed">
               <option>- Any Breed -</option>
               {{#each breeds }}
-              <option>{{ this.DISTINCT }}</option>
+              <option>{{ this.breed }}</option>
               {{/each}}
             </select>
           </div>
@@ -55,7 +55,7 @@
             <select name="age" class="form-control" id="age">
               <option>- Any Age -</option>
               {{#each ages }}
-              <option>{{ this.DISTINCT }}</option>
+              <option>{{ this.age }}</option>
               {{/each}}
             </select>       
           </div>
@@ -65,7 +65,7 @@
             <select name="temperament" class="form-control" id="temperment">
               <option>- Any Temperment -</option>
               {{#each temperaments }}
-              <option>{{ this.DISTINCT }}</option>
+              <option>{{ this.temperament }}</option>
               {{/each}}
             </select>       
           </div>
