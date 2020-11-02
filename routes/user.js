@@ -27,7 +27,7 @@ router.get('/edit/dog', async (req, res) => {
 
 // show login page
 router.get('/login', forwardAuthenticated, (req, res) => {
-  res.render('login', { success: req.flash('login'), logout: req.flash('logout') });
+  res.render('login', { success: req.flash('login'), logout: req.flash('logout'), loginErrors: req.flash('error') });
 })
 
 // authenticate login request
