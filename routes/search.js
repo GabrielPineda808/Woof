@@ -6,11 +6,13 @@ const db = require('../models');
 
 router.get('/', ensureAuthenticated, async (req, res) => {
   let { breeds, ages, temperaments } = await getSearchOptions();
-  res.render('search', { breeds, ages, temperaments });
+  let userEdit = true;
+  res.render('search', { breeds, ages, temperaments, userEdit });
 })
 
 router.post('/', async (req, res) => {
   let { breeds, ages, temperaments } = await getSearchOptions();
+
   let searchParams = req.body;
   let searchObj = {userId: { [db.Sequelize.Op.ne]: null }};
   for (const key in searchParams) {

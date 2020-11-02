@@ -2,15 +2,14 @@ const express = require('express');
 const router = express.Router();
 const passport = require('../config/passport');
 const db = require("../models")
-const { forwardAuthenticated, ensureAuthenticated } = require('../config/middleware/auth');
+const { forwardAuthenticated, ensureAuthenticated, forwardToProfile } = require('../config/middleware/auth');
 
 // view your own profile
 router.get('/', ensureAuthenticated, async (req, res) => {
   const { email , name , gender, bio } = req.user;
   const dog = await db.dog.findAll({ where: { userId: req.user.id } });
   let userEdit;
-  let dogReview;
-  res.render('userprofile', { userEdit: true, email, name, gender, bio, dog, dogReview: false });
+  res.render('userprofile', { userEdit: true, email, name, gender, bio, dog });
 })
 
 // show edit profile page
@@ -48,7 +47,7 @@ router.get('/logout', (req, res) => {
 })
 
 // view someone else's profile
-router.get('/:userId', async ( req, res) => {
+router.get('/:userId', forwardToProfile, async ( req, res) => {
   let userID = req.params.userId;
   const user = await db.user.findOne({where :{
     id: userID
@@ -56,7 +55,8 @@ router.get('/:userId', async ( req, res) => {
   const dog = await db.dog.findAll({where :{
     userId: userID
   }});
-  res.render('userprofile', { email: user.email , name: user.name, gender: user.gender, bio: user.bio, dog });
+  let dogReview;
+  res.render('userprofile', { dogReview: true, email: user.email , name: user.name, gender: user.gender, bio: user.bio, dog});
 })
 
 module.exports = router;

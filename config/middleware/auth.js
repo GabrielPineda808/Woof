@@ -12,4 +12,11 @@ function forwardAuthenticated(req, res, next) {
   res.redirect('/user')
 }
 
-module.exports = { ensureAuthenticated, forwardAuthenticated }
+function forwardToProfile(req, res, next) {
+  if (parseInt(req.params.userId) !== req.user.id) {
+    return next();
+  }
+  res.redirect('/user');
+}
+
+module.exports = { ensureAuthenticated, forwardAuthenticated, forwardToProfile }

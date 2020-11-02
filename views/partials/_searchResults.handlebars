@@ -1,7 +1,7 @@
-{{#if dogResults }}
 <div class="row">
   <div class="col-md-8">
     <h5 class="mt-0 mb-0">Search Results:</h5>
+    {{#if dogResults }}
     <table class="table table-hover mt-3 mb-5">
       <thead>
         <tr>
@@ -31,7 +31,9 @@
         {{/each}}
       </tbody>
     </table>
-
+    {{/if}}
+    {{#unless dogResults }}
+    <h6 class="mt-2">🐶 No results yet 🐶</h3>
+    {{/unless}}
   </div>
 </div>
-{{/if}}

@@ -41,9 +41,9 @@
         {{#each dog}}
           <div class="row">
             <div class="col-lg-5">
-              <h4><strong>{{this.name}}</strong> {{#unless dogReview}}
+              <h4><strong>{{this.name}}</strong> {{#if dogReview}}
                 <button type="button" class="btn btn-access mb-2 ml-2" id="dogReviewBtn">Review me!</button>
-              {{/unless}}</h4>
+              {{/if}}</h4>
               
               <p><strong>Breed : </strong> {{this.breed}}</p>
               <p><strong>Age :</strong> {{this.age}}</p>
