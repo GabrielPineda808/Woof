@@ -20,4 +20,8 @@ router.delete('/edit', async (req, res) => {
   res.json(deleteUser);
 })
 
+router.post('/search', async(req, res) => {
+  console.log(req.body);
+})
+
 module.exports = router;
