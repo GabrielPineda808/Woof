@@ -21,7 +21,8 @@ router.delete('/edit', async (req, res) => {
 })
 
 router.post('/search', async(req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
+  res.redirect(307, '/search');
 })
 
 module.exports = router;
