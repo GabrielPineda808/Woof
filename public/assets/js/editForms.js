@@ -58,3 +58,4 @@ $deleteBtn.on("click", function() {
       location.assign("/");
     })
 })
+
