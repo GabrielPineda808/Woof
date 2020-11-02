@@ -26,7 +26,8 @@ module.exports = function (sequelize, DataTypes) {
     },
     bio: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: true,
+      defaultValue: "User Bio Here"
     }
   });
   User.prototype.validPassword = function (password) {

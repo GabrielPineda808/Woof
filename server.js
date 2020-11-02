@@ -9,14 +9,17 @@ const db = require ('./models');
 const app = express();
 
 
-app.engine('handlebars', exphbs({ defaultLayout:'main' }))
+app.engine('handlebars', exphbs({ defaultLayout:'main', runtimeOptions: {
+  allowProtoPropertiesByDefault: true,
+  allowProtoMethodsByDefault: true,
+} }))
 app.set('view engine', 'handlebars');
 app.use(express.urlencoded({ extended:true }))
 app.use(express.json());
 app.use(express.static('public'));
 
 app.use(session({
-  secret: process.env.session_secret,
+  secret: "string",
   resave: true,
   saveUninitialized: true
 }));
@@ -35,6 +38,7 @@ app.use('/review', require('./routes/review'));
 const port = process.env.PORT || 3000;
 
 db.sequelize.sync().then(function() {
+  
   app.listen(port, () => {
     console.log(`server started on port ${port}`)
   })

@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "kevin",
-    "password": "mipassword",
+    "username": "root",
+    "password": "password",
     "database": "woof_db",
     "host": "127.0.0.1",
     "dialect": "mysql"

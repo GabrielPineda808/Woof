@@ -17,14 +17,12 @@ router.post('/', async (req, res) => {
   let newUser = {
     name: uName,
     gender: uGender,
-    bio: null,
     email,
     password,
   }
   let newDog = {
     name: dName,
     gender: dGender,
-    bio: null,
     breed,
     age,
     temperament,

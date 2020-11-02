@@ -27,7 +27,8 @@ module.exports = function (sequelize, DataTypes) {
     // allows user to not insert bio, can be added later as well
     bio: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: true,
+      defaultValue: "My dog is a dog"
     }
   });
   Dog.associate = function (models) {
