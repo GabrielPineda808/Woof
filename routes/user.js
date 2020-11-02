@@ -7,27 +7,26 @@ const { forwardAuthenticated, ensureAuthenticated } = require('../config/middlew
 // view your own profile
 router.get('/', ensureAuthenticated, async (req, res) => {
   const { email , name , gender, bio } = req.user;
-   const dog = await db.dog.findAll({where :{
-    userId: req.user.id
-  }});
+  const dog = await db.dog.findAll({ where: { userId: req.user.id } });
   let userEdit;
-  res.render('userprofile', {email, name, gender, bio, dog, userEdit: true});
+  res.render('userprofile', { userEdit: true, email, name, gender, bio, dog });
 })
 
 // show edit profile page
-router.get('/edit', (req, res)=>{
+router.get('/edit', (req, res) => {
   const { email , name , bio } = req.user;
   res.render("userEdit", {email, name, bio} )
 })
 
-// edit user profile
-router.put('/edit', async (req, res)=>{
-  let editUser = db.user.update(req.body, {where: {email: req.body.email}});
-  res.json(editUser)
+// show edit dog profile page
+router.get('/edit/dog', async (req, res) => {
+  const dog = await db.dog.findAll({ where : { userId: req.user.id } });
+  let dogEdit; 
+  res.render("userEdit", { dogEdit: true, dog })
 })
 
 // show login page
-router.get('/login', (req, res) => {
+router.get('/login', forwardAuthenticated, (req, res) => {
   res.render('login', { success: req.flash('login'), logout: req.flash('logout') });
 })
 
@@ -56,7 +55,7 @@ router.get('/:userId', async ( req, res) => {
   const dog = await db.dog.findAll({where :{
     userId: userID
   }});
-  res.render('userprofile', {email: user.email , name: user.name, gender: user.gender, bio : user.bio, dog});
+  res.render('userprofile', { email: user.email , name: user.name, gender: user.gender, bio: user.bio, dog });
 })
 
 module.exports = router;

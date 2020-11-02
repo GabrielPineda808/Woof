@@ -32,6 +32,7 @@ app.use(passport.session());
 app.use(flash());
 
 app.use('/', require('./routes'));
+app.use('/api', require('./routes/api'));
 app.use('/register', require('./routes/register'));
 app.use('/user', require('./routes/user'));
 app.use('/search', require('./routes/search'));
