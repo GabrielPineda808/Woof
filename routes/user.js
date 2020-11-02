@@ -16,8 +16,13 @@ router.get('/', ensureAuthenticated, async (req, res) => {
 })
 
 router.get('/edit', (req, res)=>{
-  const { email , name , gender, bio } = req.user;
+  const { email , name , bio } = req.user;
   res.render("userEdit", {email, name, bio} )
+})
+
+router.put('/edit', async (req, res)=>{
+  let editUser = db.user.update(req.body, {where: {email: req.body.email}});
+  res.json(editUser)
 })
 
 router.get('/login', (req, res) => {
