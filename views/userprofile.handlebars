@@ -22,11 +22,13 @@
     
     <div id="home" class="container tab-pane active"><br>
       <h2> Information
-        <small>
+        {{#if userEdit}}
+          <small>
           <span class="btn-group">
             <button class="btn btn-mini">Edit</button>
           </span>
         </small>
+        {{/if}}
       </h2>
       <p>{{bio}}</p>
       <p>Contact me at {{email}}</p>
@@ -34,11 +36,14 @@
     
     <div id="menu1" class="container tab-pane fade"><br>
       <h2> Pets
-        <small>
+        {{#if userEdit}}
+          <small>
           <span class="btn-group">
             <button class="btn btn-mini">Edit</button>
           </span>
         </small>
+        {{/if}}
+        
       </h2>
       {{#each dog}}
         <h4><strong>{{this.name}}</strong> </h4>
@@ -65,7 +70,8 @@
 	      </div>
 	    </div>
       <div>
-        <form>
+        {{#unless userEdit}}
+          <form>
           <div class="form-group">
             <label for="exampleFormControlInput1"><strong>Username :</strong></label>
             <input class="form-control" id="username" type="text" placeholder={{name}} readonly>
@@ -75,7 +81,8 @@
             <textarea class="form-control" id="textarea" rows="3" placeholder="Leave a review ..."></textarea>
           </div>
           <button type="submit" class="btn btn-primary mb-2 ml-2" id="submitBtn">Submit Review</button>
-        </form>
+          </form>
+        {{/unless}}
       </div>
 	        </div>
         </div>

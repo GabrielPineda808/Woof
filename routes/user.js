@@ -11,8 +11,8 @@ router.get('/', ensureAuthenticated, async (req, res) => {
    const dog = await db.dog.findAll({where :{
     userId: req.user.id
   }});
-
-  res.render('userprofile', {email, name, gender, bio, dog});
+  let userEdit;
+  res.render('userprofile', {email, name, gender, bio, dog, userEdit: true});
 })
 
 router.get('/login', (req, res) => {
