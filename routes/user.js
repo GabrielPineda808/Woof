@@ -9,7 +9,8 @@ router.get('/', ensureAuthenticated, async (req, res) => {
   const { email , name , gender, bio } = req.user;
   const dog = await db.dog.findAll({ where: { userId: req.user.id } });
   let userEdit;
-  res.render('userprofile', { userEdit: true, email, name, gender, bio, dog });
+  let dogReview;
+  res.render('userprofile', { userEdit: true, email, name, gender, bio, dog, dogReview: false });
 })
 
 // show edit profile page
