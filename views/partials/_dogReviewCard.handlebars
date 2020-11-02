@@ -1,16 +1,17 @@
 {{!-- handlebars function, this needs to go in a different file --}}
-Handlebars.registerHelper("writeStars", function(options){
+{{!-- Handlebars.registerHelper("writeStars", function(options){
     var str = "";
     for (var i = 0; i < options ; i++){
         str = str + "*";
     }
     return new Handlebars.SafeString('<div>' + str + '</div>');
-});
+}); --}}
 
 <div class="container">
     <div class="card">
         <div class = "card-body">
-            <h5 class = "card-title">{{!-- get writer id and name --}}</h5>
+            {{!-- Search through all User.id where DogReview.writerId --}}
+            <h5 data-id="" class = "card-title" > {{DogReview.writerId}}</h5>
             <p class = "card-text">{{#writeStars DogReview.ratings}}{{/writeStars}}</p>
             <p class = "card-text">Number of dates: {{DogReview.dates}}</p>
             <hr>
@@ -18,3 +19,4 @@ Handlebars.registerHelper("writeStars", function(options){
         </div>
     </div>
 </div>
+
