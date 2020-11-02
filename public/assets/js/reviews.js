@@ -1,8 +1,48 @@
 const $username = $("#username").val();
 const $reviewBody = $("textarea#reviewBody").val();
 const $userReviewBtn = $("#userReviewBtn");
-const $rating = $("input[name='stars']").val();
+const $rating = $("input[name='stars']");
+// const $rating = $("input#stars1").val();
 const $reviewList = $(" .list-group");
+
+const $rating1 = $("input#stars1");
+const $rating2 = $("input#stars2");
+const $rating3 = $("input#stars3");
+const $rating4 = $("input#stars4");
+const $rating5 = $("input#stars5");
+//set rating 1 to true
+console.log($rating1.attr("checked","checked"));
+// console logs true
+console.log($rating1.is(":checked"));
+if($rating2.is(":checked")){
+  if($rating3.is(":checked")){
+    if($rating4.is(":checked")){
+      if($rating.is(":checked")){
+        const $truerating = $("input#stars5").val();
+        console.log("5");
+      }
+      else{
+        const $truerating = $("input#stars4").val();
+        console.log("4");
+      }
+    }
+    else{
+      const $truerating = $("input#stars3").val();
+      console.log("3");
+    }
+  }
+  else{
+    const $truerating = $("input#stars2").val();
+    console.log("2");
+  } 
+}
+if($rating1.is(":checked")){
+  const $truerating = $("input#stars1").val();
+  console.log()
+  console.log("1");
+}
+
+
 
 // // activereview is used to keep track of the note in the textarea
 // var activereview = {};
@@ -104,9 +144,11 @@ const $reviewList = $(" .list-group");
 // getAndRenderReview();
 
 $userReviewBtn.on("click", function(){
+  console.log("button has been clicked");
   let path = window.location.pathname.split('/');
   let posteeId = path[path.length-1];
-  let newReview = { body: $reviewBody, rating: $rating, posterEmail: $username, userId: posteeId}
+  console.log($reviewBody);
+  let newReview = { body: $reviewBody, rating: $truerating, posterEmail: $username, userId: posteeId}
   console.log(newReview);
   
   // var review = $review.val()

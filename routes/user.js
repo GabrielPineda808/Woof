@@ -55,7 +55,7 @@ router.get('/:userId', async ( req, res) => {
   const dog = await db.dog.findAll({where :{
     userId: userID
   }});
-  res.render('userprofile', { email: user.email , name: user.name, gender: user.gender, bio: user.bio, dog });
+  res.render('userprofile', { loggedinEmail: req.user.email ,email: user.email , name: user.name, gender: user.gender, bio: user.bio, dog });
 })
 
 module.exports = router;
