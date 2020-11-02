@@ -21,19 +21,12 @@ router.delete('/edit', async (req, res) => {
 })
 
 router.post('/search', async(req, res) => {
-  // console.log(req.body);
   res.redirect(307, '/search');
 })
 
 router.get('/search/:userId', async(req, res) => {
-  // let owner = await db.dog.findOne({ where: {
-  //   userId: req.params.userId
-  // }})
   let userId = req.params.userId;
   res.redirect(`/user/${userId}`)
-  // console.log(owner.id);
-  // res.sendStatus(200);
-  // res.redirect(`/user/${owner.id}`);
 })
 
 module.exports = router;
