@@ -18,10 +18,6 @@ $("#dogSubmit").on("click", function(){
     rating : ratings
   }
 
-  $.ajax("/review/dog", { type: "PUT", data: dogObj })
-    .then(function() {
-      location.assign("/user");
-    })
 })
 
 let cancel = $("#cancelBtn")
