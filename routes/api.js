@@ -15,5 +15,9 @@ router.put('/edit/dog', async (req, res) => {
   res.json(editDog);
 })
 
+router.delete('/edit', async (req, res) => {
+  let deleteUser = await db.user.destroy({ where: { id: req.user.id } });
+  res.json(deleteUser);
+})
 
 module.exports = router;

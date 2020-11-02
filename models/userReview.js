@@ -13,15 +13,8 @@ module.exports = function (sequelize, DataTypes) {
     // Use ID of user posting review
     UserReview.associate = function (models) {
         UserReview.belongsTo(models.user, {
-            as: 'posterId',
             foreignKey: {
-                allowNull: false
-            }
-        });
-        UserReview.belongsTo(models.user, {
-            as: 'posteeId',
-            foreignKey: {
-                allowNull: false
+                name: 'posteeId'
             }
         });
     };

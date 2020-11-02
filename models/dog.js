@@ -33,11 +33,7 @@ module.exports = function (sequelize, DataTypes) {
   });
   Dog.associate = function (models) {
     // Dogs go to user
-    Dog.belongsTo(models.user, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
+    Dog.belongsTo(models.user);
     
     // Dog has many reviews
     Dog.hasMany(models.dogReview, {

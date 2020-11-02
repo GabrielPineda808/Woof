@@ -18,15 +18,11 @@ module.exports = function (sequelize, DataTypes) {
 
     DogReview.belongsTo(models.dog, {
       foreignKey: {
-        allowNull: false,
+        allowNull: false
       },
     });
 
-    DogReview.belongsTo(models.user, {
-      foreignKey: {
-        allowNull: false,
-      },
-    });
+    DogReview.belongsTo(models.user);
   };
 
   return DogReview;

@@ -1,7 +1,8 @@
-const $userEdit = $("#userEdit")
-const $dogEdit = $("#dogEdit")
+const $userEdit = $("#userEdit");
+const $dogEdit = $("#dogEdit");
 const $editUserBtn = $("#editUserBtn");
 const $editDogBtn = $("#editDogBtn");
+const $deleteBtn = $("#deleteBtn");
 
 $userEdit.on("click", function() {
   location.href= "/user/edit"
@@ -49,4 +50,11 @@ $editDogBtn.on("click", function() {
       location.assign("/user");
     })
 
+})
+
+$deleteBtn.on("click", function() {
+  $.ajax({ method: "DELETE", url: "/api/edit" })
+    .then(function() {
+      location.assign("/");
+    })
 })
