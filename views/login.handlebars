@@ -1,4 +1,4 @@
-<div class="login-page">
+<img class="login-page" src="/assets/images/login_background_alt.png"></img>
   {{> _navbar}}
 
   <div class="container">
@@ -7,21 +7,20 @@
       
       <div class="col-md-6">
         
-        <div class="card">
+        <div class="card shadow-lg login-card">
           <div class="card-body">
             <div class="d-flex justify-content-center">
               <img src="/assets/images/pawprint_login.jpg" class="rounded-circle login-photo">
             </div>
-            <form action='/user/login' method='POST' class="login form">
+            <form action='/user/login' method='POST' class="form">
+              {{> _messages }}
               <div class="form-group">
-                <label for="email">Email address</label>
                 <input type="email" class="form-control" name='email' placeholder="user@email.com">
               </div>
               <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" name='password' placeholder="*******">
+                <input type="password" class="form-control" name='password' placeholder="password">
               </div>
-              <button type="submit" class="btn btn-primary">Login</button>
+              <button type="submit" class="btn btn-access">Login</button>
             </form>
             <br />
             <p>Or sign up <a class="sign-up-link" href="/register">here</a></p>
@@ -33,4 +32,4 @@
       <div class="col-md-3"></div>
     </div>
   </div>
-</div>
+

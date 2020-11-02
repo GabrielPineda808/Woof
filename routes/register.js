@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-// const db = require('../models');
+const db = require('../models');
 const formValidate = require('../public/assets/js/formValidate');
 const { forwardAuthenticated } = require('../config/middleware/auth');
 
@@ -8,24 +8,43 @@ const { forwardAuthenticated } = require('../config/middleware/auth');
 
 router.get('/', forwardAuthenticated, (req, res) => {
   // TODO: replace this view with register page
-  res.sendStatus(200);
+  res.render('signUp');
 })
 
 router.post('/', async (req, res) => {
-  // TODO: change model 
-  const { name, email, password, confirmPassword } = req.body;
-  let checkUser = await db.User.findOne({ where: { email: req.body.email }})
-
-  let errors = await formValidate(name, email, password, confirmPassword, checkUser);
-  
-  if (errors.errors.length > 0) {
-    res.render('register', errors);
-  } else {
-    await db.User.create(req.body)
-    req.flash('login', 'You are now registered and can log in.')
-    res.redirect('/user/login')
-    // res.redirect(307, '/user/login');
+  // console.log(req.body);
+  let { uName, email, password, uGender, dName, breed, age, temperament, dGender } = req.body;
+  let newUser = {
+    name: uName,
+    gender: uGender,
+    bio: null,
+    email,
+    password,
   }
+  let newDog = {
+    name: dName,
+    gender: dGender,
+    bio: null,
+    breed,
+    age,
+    temperament,
+  }
+
+  await db.sequelize.transaction(async (transaction) => {
+    let checkUser = await db.user.findOne({ where: { email: newUser.email } })
+    if (checkUser) {
+      res.render('signUp', { userExists: 'User already exists.' });
+    } else {
+      let userInsert = await db.user.create(newUser, { transaction });
+      await db.dog.create({ 
+        ...newDog, 
+        userId: userInsert.id,
+      }, { transaction })
+      req.flash('login', 'You are now registered and can log in.')
+      res.redirect('/user/login')
+    }
+  })
+  // res.redirect(307, '/user/login');
 })
 
 router.get('/dog', (req, res) => {

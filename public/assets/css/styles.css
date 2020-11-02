@@ -1,5 +1,25 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   padding-top: 64px;
+  background-color: #F5F4F2;
+  height: 100vh;
+  font-family: 'Trispace', sans-serif;
+}
+
+.btn-access {
+  background: linear-gradient(to right, #ff105f, #ffad06);
+  color: white;
+  border: 0;
+  opacity: 0.8;
+}
+
+input:focus::placeholder {
+  color: transparent;
 }
 
 /* ==================================================================== */
@@ -31,8 +51,8 @@ body {
 
 .carousel-caption h1 {
   font-size: 4rem;
-  font-family: 'Trispace', sans-serif;
   color: white;
+  font-weight: 700;
 }
 
 /* ==================================================================== */
@@ -40,6 +60,8 @@ body {
 
 .navbar-custom {
   background: #F5F4F2;
+  font-weight: 400;
+  box-shadow: 0 -1px 5px -1px #000;
 }
 
 .navbar-brand {
@@ -75,16 +97,15 @@ a.nav-link:hover {
 /* login page */
 
 .login-page {
-  background-image: url('/assets/images/login_background_alt.png');
-  background-size: cover;
-  height: 100vh;
-  background-repeat: no-repeat;
+  max-width: 100%;
+  position: fixed;
 }
 
-.card {
+.login-card {
   margin-top: 15%;
   background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4));
   color: white;
+  border: 0;
 }
 
 .login-photo {
@@ -93,6 +114,95 @@ a.nav-link:hover {
 }
 
 .sign-up-link {
-  color: #f1bdaf
+  color: #CAF7F9;
+  text-decoration: underline;
 }
+
+/* ==================================================================== */
+/* register page */
+
+.register-page-contain {
+  padding-right: 15px;
+}
+
+.register-bg {
+  opacity: 0.8;
+}
+
+.register-title {
+  text-align: center;
+  font-weight: 500;
+}
+
+.form-control, .form-control:focus {
+  border: 0;
+  border-bottom: 1px solid black;
+  outline: none;
+  background-color: #F5F4F2;
+  border-radius: 0;
+  box-shadow: none;
+  font-weight: 200;
+}
+
+.step-row {
+  width: 100%;
+  height: 2rem;
+  margin: 0;
+  align-items: center;
+  box-shadow: 0 -1px 5px -1px #000;
+  position: relative;
+  overflow: hidden;
+}
+
+#progress {
+  background: linear-gradient(to right, #ff105f, #ffad06);
+  height: 2rem;
+  width: 50%;
+  position: absolute;
+  transition: 1s;
+}
+
+#progress::after {
+  content: '';
+  height: 0;
+  width: 0;
+  border-top: 1rem solid transparent;
+  border-bottom: 1rem solid transparent;
+  position: absolute;
+  right: -1rem;
+  top: 0;
+  border-left: 1rem solid #ffad06;
+}
+
+.form-container {
+  position: relative;
+}
+
+.register-form {
+  position: absolute;
+  width: 60%;
+}
+
+#userForm {
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+#dogForm {
+  display: none;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.userRadioValid {
+  display: none;
+  color: red;
+}
+
+#noBlanks, #passwordMatch, #passwordRegx, #noBlanksDogs {
+  display: none;
+}
+
+/* ==================================================================== */
+/* messages */
 
