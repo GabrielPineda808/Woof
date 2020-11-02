@@ -9,15 +9,19 @@
         <li class="nav-item active">
           <a class="nav-link" href="/search">Search</a>
         </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/user/login">Login</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/register">Sign-Up</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/user/logout">Log-Out</a>
-        </li>
+        {{#unless userEdit}}
+          <li class="nav-item active">
+            <a class="nav-link" href="/user/login">Login</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/register">Sign-Up</a>
+          </li>
+        {{/unless}}
+        {{#if userEdit}}
+          <li class="nav-item active">
+            <a class="nav-link" href="/user/logout">Log-Out</a>
+          </li>
+        {{/if}}
       </ul>
     </div>
   </nav>
