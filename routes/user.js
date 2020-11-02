@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('../config/passport');
+const db = require("../models")
 const { forwardAuthenticated, ensureAuthenticated } = require('../config/middleware/auth');
 
 // user login/logout/profile routes
@@ -10,6 +11,7 @@ router.get('/', ensureAuthenticated, async (req, res) => {
    const dog = await db.dog.findAll({where :{
     userId: req.user.id
   }});
+  console.log(typeof dog)
   console.log(dog);
   console.log(req.user);
   res.render('userprofile', {email, name, gender, bio, dog});

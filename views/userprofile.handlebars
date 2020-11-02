@@ -58,13 +58,13 @@
         </small>
       </h2>
       {{#each dog}}
-      <h4><strong>{{dog.name}}</strong> </h4>
-      <p><strong>Breed : </strong> {{dog.name}}</p>
-      <p><strong>Age :</strong> {{dog.age}}</p>
-      <p><strong>Gender :</strong> {{dog.gender}}</p>
-      <p><strong>Temperament :</strong>{{dog.temperament}}</p>
-      <P><strong>Bio:</strong> <br>
-        {{dog.bio}}</P>
+        <h4><strong>{{this.name}}</strong> </h4>
+        <p><strong>Breed : </strong> {{this.breed}}</p>
+        <p><strong>Age :</strong> {{this.age}}</p>
+        <p><strong>Gender :</strong> {{this.gender}}</p>
+        <p><strong>Temperament :</strong>{{this.temperament}}</p>
+        <P><strong>Bio:</strong> <br>
+          {{this.bio}}</P>
       {{/each}}
     </div>
     
