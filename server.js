@@ -18,9 +18,11 @@ app.use(express.urlencoded({ extended:true }))
 app.use(express.json());
 app.use(express.static('public'));
 
+
+
 app.use(session({
   secret: "string",
-  resave: true,
+  resave: false,
   saveUninitialized: true
 }));
 
@@ -30,6 +32,7 @@ app.use(passport.session());
 app.use(flash());
 
 app.use('/', require('./routes'));
+app.use('/api', require('./routes/api'));
 app.use('/register', require('./routes/register'));
 app.use('/user', require('./routes/user'));
 app.use('/search', require('./routes/search'));
@@ -38,7 +41,6 @@ app.use('/review', require('./routes/review'));
 const port = process.env.PORT || 3000;
 
 db.sequelize.sync().then(function() {
-  
   app.listen(port, () => {
     console.log(`server started on port ${port}`)
   })
