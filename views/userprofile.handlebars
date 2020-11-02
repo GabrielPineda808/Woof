@@ -19,7 +19,7 @@
   </nav>
 
   <div class="container">
-  <h2>Username Here</h2>
+  <h2>{{name}}</h2>
   <br>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
@@ -45,7 +45,8 @@
           </span>
         </small>
       </h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p>{{bio}}</p>
+      <p>Contact me at {{email}}</p>
     </div>
     
     <div id="menu1" class="container tab-pane fade"><br>
@@ -56,13 +57,15 @@
           </span>
         </small>
       </h2>
-      <h4><strong>Pet name here</strong> </h4>
-      <p><strong>Breed : </strong> Pitbull</p>
-      <p><strong>Age :</strong> 2</p>
-      <p><strong>Gender :</strong> Male</p>
-      <p><strong>Temperament :</strong> Relaxed</p>
+      {{#each dog}}
+      <h4><strong>{{dog.name}}</strong> </h4>
+      <p><strong>Breed : </strong> {{dog.name}}</p>
+      <p><strong>Age :</strong> {{dog.age}}</p>
+      <p><strong>Gender :</strong> {{dog.gender}}</p>
+      <p><strong>Temperament :</strong>{{dog.temperament}}</p>
       <P><strong>Bio:</strong> <br>
-        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</P>
+        {{dog.bio}}</P>
+      {{/each}}
     </div>
     
     <div id="menu2" class="container tab-pane fade"><br>
@@ -77,20 +80,10 @@
 	      <div class="card">
 	        <div class="card-body">
             <ul class="list-group">
-              <li>
-                <div class="row">
-        	        <div class="col-md-2">
-        	          <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
-        	        </div>
-        	        <div class="col-md-10">
-        	          <p>
-        	            <a class="float-left" href="#"><strong>Other User</strong></a>
-        	          </p>
-        	        <div class="clearfix"></div>
-        	          <p>Lorem Ipsum is simply dummy text of the pr make  but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-        	        </div>
-	              </div>
-              </li>
+              {{#each UserReview}}
+                {{>UserReview/_userReviewCard}}
+                <br>
+              {{/each}}
             </ul>
 	      </div>
 	    </div>
@@ -98,7 +91,7 @@
         <form>
           <div class="form-group">
             <label for="exampleFormControlInput1"><strong>Username :</strong></label>
-            <input class="form-control" id="username" type="text" placeholder="Username Auto Display here" readonly>
+            <input class="form-control" id="username" type="text" placeholder={{name}} readonly>
           </div>
           <div class="form-group">
             <label for="exampleFormControlTextarea1"><strong>Review : </strong></label>
