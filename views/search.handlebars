@@ -45,20 +45,18 @@
           <div class="form-group">
             <select name="breed" class="form-control" id="breed">
               <option>- Any Breed -</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              {{#each breeds }}
+              <option>{{ this.DISTINCT }}</option>
+              {{/each}}
             </select>
           </div>
           <!-- select age of dog-->
           <div class="form-group">
             <select name="age" class="form-control" id="age">
               <option>- Any Age -</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              {{#each ages }}
+              <option>{{ this.DISTINCT }}</option>
+              {{/each}}
             </select>       
           </div>
 
@@ -66,10 +64,9 @@
           <div class="form-group">
             <select name="temperament" class="form-control" id="temperment">
               <option>- Any Temperment -</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+              {{#each temperaments }}
+              <option>{{ this.DISTINCT }}</option>
+              {{/each}}
             </select>       
           </div>
           <!-- select with milage of dog-->
