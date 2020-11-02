@@ -2,91 +2,91 @@
 <div class="wrapper">
 
   <div class="container">
-  <h2>{{name}}</h2>
-  <br>
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#menu1">Pets</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#menu2">Reviews</a>
-    </li>
-  </ul>
+    <h2>{{name}}</h2><br>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu1">Pets</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu2">Reviews</a>
+      </li>
+    </ul>
 
-  <!-- Tab panes -->
-  <div class="tab-content">
-    
-    <div id="home" class="container tab-pane active"><br>
-      <h2> Information
-        {{#if userEdit}}
-          <small>
-          <span class="btn-group">
-            <button class="btn btn-mini" id="userEdit">Edit</button>
-          </span>
-        </small>
-        {{/if}}
-      </h2>
-      <p>{{bio}}</p>
-      <p>Contact me at {{email}}</p>
-    </div>
-    
-    <div id="menu1" class="container tab-pane fade"><br>
-      <h2> Pets
-        {{#if userEdit}}
-          <small>
-          <span class="btn-group">
-            <button class="btn btn-mini" id="dogEdit">Edit</button>
-          </span>
-        </small>
-        {{/if}}
-        
-      </h2>
-      {{#each dog}}
-        <h4><strong>{{this.name}}</strong> </h4>
-        <p><strong>Breed : </strong> {{this.breed}}</p>
-        <p><strong>Age :</strong> {{this.age}}</p>
-        <p><strong>Gender :</strong> {{this.gender}}</p>
-        <p><strong>Temperament :</strong>{{this.temperament}}</p>
-        <P><strong>Bio:</strong> <br>
-          {{this.bio}}</P>
-      {{/each}}
-    </div>
-    
-    <div id="menu2" class="container tab-pane fade"><br>
-      <h2> Reviews</h2>
-      <div class="container">
-	      <div class="card">
-	        <div class="card-body">
-            <ul class="list-group">
-              {{#each UserReview}}
-                {{>UserReview/_userReviewCard}}
-                <br>
-              {{/each}}
-            </ul>
-	      </div>
-	    </div>
-      <div>
-        {{#unless userEdit}}
-          <form>
-          <div class="form-group">
-            <label for="exampleFormControlInput1"><strong>Username :</strong></label>
-            <input class="form-control" id="username" type="text" placeholder={{name}} readonly>
-          </div>
-          <div class="form-group">
-            <label for="exampleFormControlTextarea1"><strong>Review : </strong></label>
-            <textarea class="form-control" id="textarea" rows="3" placeholder="Leave a review ..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary mb-2 ml-2" id="submitBtn">Submit Review</button>
-          </form>
-        {{/unless}}
+    <!-- Tab panes -->
+    <div class="tab-content">
+      
+      <div id="home" class="container tab-pane active"><br>
+        <h2> Information
+          {{#if userEdit}}
+            <small>
+            <span class="btn-group">
+              <button class="btn btn-mini" id="userEdit">Edit</button>
+            </span>
+          </small>
+          {{/if}}
+        </h2>
+        <p>{{bio}}</p>
+        <p>Contact me at {{email}}</p>
       </div>
-	        </div>
+      
+      <div id="menu1" class="container tab-pane fade"><br>
+        <h2> Pets
+          {{#if userEdit}}
+            <small>
+            <span class="btn-group">
+              <button class="btn btn-mini" id="dogEdit">Edit</button>
+            </span>
+          </small>
+          {{/if}}
+          
+        </h2>
+        {{#each dog}}
+          <h4><strong>{{this.name}}</strong> </h4>
+          <p><strong>Breed : </strong> {{this.breed}}</p>
+          <p><strong>Age :</strong> {{this.age}}</p>
+          <p><strong>Gender :</strong> {{this.gender}}</p>
+          <p><strong>Temperament :</strong>{{this.temperament}}</p>
+          <P><strong>Bio:</strong> <br>
+            {{this.bio}}</P>
+        {{/each}}
+      </div>
+      
+      <div id="menu2" class="container tab-pane fade"><br>
+        <h2> Reviews</h2>
+        <div class="container">
+          <div class="card">
+            <div class="card-body">
+              <ul class="list-group">
+                {{#each UserReview}}
+                  {{>UserReview/_userReviewCard}}
+                  <br>
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+          <div>
+          {{#unless userEdit}}
+            <form>
+              <div class="form-group">
+                <label for="exampleFormControlInput1"><strong>Username :</strong></label>
+                <input class="form-control" id="username" type="text" placeholder={{name}} readonly>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1"><strong>Review : </strong></label>
+                <textarea class="form-control" id="textarea" rows="3" placeholder="Leave a review ..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary mb-2 ml-2" id="submitBtn">Submit Review</button>
+            </form>
+          {{/unless}}
+          </div>
         </div>
       </div>
+
     </div>
+
   </div>
 </div>
