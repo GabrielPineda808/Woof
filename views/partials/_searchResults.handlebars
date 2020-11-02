@@ -1,0 +1,39 @@
+{{#if dogResults }}
+<div class="row">
+  <div class="col-md-8">
+    <h5 class="mt-0 mb-0">Search Results:</h5>
+    <table class="table table-hover mt-3 mb-5">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name
+          </th>
+          <th scope="col">Gender</th>
+          <th scope="col">Breed</th>
+          <th scope="col">Age</th>
+          <th scope="col" style="display:none">ID</th>
+          <th scope="col">Miles</th>
+          <th scope="col"></th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {{#each dogResults }}
+        <tr>
+          <th scope="row">1</th>
+          <td>{{ this.name }}</td>
+          <td>{{ this.gender }}</td>
+          <td>{{ this.breed }}</td>
+          <td>{{ this.age }}</td>
+          <td style="display:none">{{ this.id }}</td>
+          <td>Within 25 Miles</td>
+          <td><a href="/api/search/{{ this.userId }}">See Profile</a>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+  </div>
+</div>
+{{/if}}

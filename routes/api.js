@@ -20,4 +20,13 @@ router.delete('/edit', async (req, res) => {
   res.json(deleteUser);
 })
 
+router.post('/search', async(req, res) => {
+  res.redirect(307, '/search');
+})
+
+router.get('/search/:userId', async(req, res) => {
+  let userId = req.params.userId;
+  res.redirect(`/user/${userId}`)
+})
+
 module.exports = router;
