@@ -15,6 +15,11 @@ router.get('/', ensureAuthenticated, async (req, res) => {
   res.render('userprofile', {email, name, gender, bio, dog, userEdit: true});
 })
 
+router.get('/edit', (req, res)=>{
+  const { email , name , gender, bio } = req.user;
+  res.render("userEdit", {email, name, bio} )
+})
+
 router.get('/login', (req, res) => {
   res.render('login', { success: req.flash('login'), logout: req.flash('logout') });
 })
