@@ -10,12 +10,11 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
     // UserReview goes to User (poster)
-    // Use ID of user posting review
+    // Use email of user posting review
     UserReview.associate = function (models) {
         UserReview.belongsTo(models.user, {
-            foreignKey: {
-                name: 'posteeId'
-            }
+          foreignKey: 'posterEmail',
+          targetKey: 'email',
         });
     };
     // UserReview goes to User (postee)

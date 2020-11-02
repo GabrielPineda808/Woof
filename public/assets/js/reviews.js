@@ -1,7 +1,8 @@
-var $Username = $("#username");
-var $review = $("#review");
-var $newReviewBtn = $("#submitBtn");
-var $reviewList = $(" .list-group");
+const $username = $("#username").val();
+const $review = $("#review").val();
+const $userReviewBtn = $("#userReviewBtn");
+const $rating = $("input[name='stars']").val();
+const $reviewList = $(" .list-group");
 
 // // activereview is used to keep track of the note in the textarea
 // var activereview = {};
@@ -102,32 +103,36 @@ var $reviewList = $(" .list-group");
 // // Gets and renders the initial list of notes
 // getAndRenderReview();
 
-$newReviewBtn.on("click", function(e){
-  e.preventDefault()
-  var review = $review.val()
-  var username = $Username.val()
-  var reviewListItems = [];
+$userReviewBtn.on("click", function(){
+  let path = window.location.pathname.split('/');
+  let posteeId = path[path.length-1];
+  let newReview = { body: $review, rating: $rating, posterEmail: $username, userId: posteeId}
+  console.log(newReview);
+  
+  // var review = $review.val()
+  // var username = $Username.val()
+  // var reviewListItems = [];
 
-  var li = $("<li>")
-  var div = $("<div class='row'>");
-  var newDiv = $("<div class='col-md-2'>");
-  var img = $("<img src='https://image.ibb.co/jw55Ex/def_face.jpg' class='img img-rounded img-fluid'/>")
-  var divv = $("<div class='col-md-10'>")
-  var ptag = $("<p>")
-  var atag = $('<a class="float-left" href="#"><strong>' + username +'</strong></a>')
-  var tagp = $("<p>").data(review)
-  var ddiv = $('<div class="clearfix">')
+  // var li = $("<li>")
+  // var div = $("<div class='row'>");
+  // var newDiv = $("<div class='col-md-2'>");
+  // var img = $("<img src='https://image.ibb.co/jw55Ex/def_face.jpg' class='img img-rounded img-fluid'/>")
+  // var divv = $("<div class='col-md-10'>")
+  // var ptag = $("<p>")
+  // var atag = $('<a class="float-left" href="#"><strong>' + username +'</strong></a>')
+  // var tagp = $("<p>").data(review)
+  // var ddiv = $('<div class="clearfix">')
     
-  li.append(div)
-  div.append(newDiv)
-  newDiv.append(img)
-  div.append(divv)
-  divv.append(ptag)
-  ptag.append(atag)
-  divv.append(ddiv)
-  ddiv.append(tagp)
+  // li.append(div)
+  // div.append(newDiv)
+  // newDiv.append(img)
+  // div.append(divv)
+  // divv.append(ptag)
+  // ptag.append(atag)
+  // divv.append(ddiv)
+  // ddiv.append(tagp)
 
-  reviewListItems.push(li);
+  // reviewListItems.push(li);
 
-  $reviewList.prepend(reviewListItems);
+  // $reviewList.prepend(reviewListItems);
 })
