@@ -18,10 +18,11 @@ router.post('/', async (req, res) => {
   let dogResults = await db.dog.findAll({ where: {
     breed: req.body.breed,
     age: req.body.age,
-    temperament: req.body.temperament
+    temperament: req.body.temperament,
+    gender: req.body.gender
   }})
-
-  res.render('search');
+  console.log(dogResults);
+  res.render('search', { dogResults });
 })
 
 module.exports = router;
