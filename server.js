@@ -18,9 +18,11 @@ app.use(express.urlencoded({ extended:true }))
 app.use(express.json());
 app.use(express.static('public'));
 
+
+
 app.use(session({
   secret: "string",
-  resave: true,
+  resave: false,
   saveUninitialized: true
 }));
 

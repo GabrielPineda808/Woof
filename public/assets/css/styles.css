@@ -199,10 +199,16 @@ a.nav-link:hover {
   color: red;
 }
 
+/* ==================================================================== */
+/* messages */
+
 #noBlanks, #passwordMatch, #passwordRegx, #noBlanksDogs {
   display: none;
 }
 
 /* ==================================================================== */
-/* messages */
+/* edit forms */
+.edit-card {
+  margin-top: 15%;
+}
 

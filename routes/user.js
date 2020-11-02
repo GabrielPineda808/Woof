@@ -4,8 +4,7 @@ const passport = require('../config/passport');
 const db = require("../models")
 const { forwardAuthenticated, ensureAuthenticated } = require('../config/middleware/auth');
 
-// user login/logout/profile routes
-
+// view your own profile
 router.get('/', ensureAuthenticated, async (req, res) => {
   const { email , name , gender, bio } = req.user;
    const dog = await db.dog.findAll({where :{
@@ -15,24 +14,24 @@ router.get('/', ensureAuthenticated, async (req, res) => {
   res.render('userprofile', {email, name, gender, bio, dog, userEdit: true});
 })
 
+// show edit profile page
 router.get('/edit', (req, res)=>{
   const { email , name , bio } = req.user;
   res.render("userEdit", {email, name, bio} )
 })
 
+// edit user profile
 router.put('/edit', async (req, res)=>{
   let editUser = db.user.update(req.body, {where: {email: req.body.email}});
   res.json(editUser)
 })
 
+// show login page
 router.get('/login', (req, res) => {
   res.render('login', { success: req.flash('login'), logout: req.flash('logout') });
 })
 
-// router.get('/login', forwardAuthenticated, (req, res) => {
-//   res.render('login', { success: req.flash('login'), loginErrors: req.flash('error'), logout: req.flash('logout')});
-// })
-
+// authenticate login request
 router.post('/login', (req, res, next) => {
   passport.authenticate("local", {
     successRedirect: '/user',
@@ -41,24 +40,22 @@ router.post('/login', (req, res, next) => {
   })(req,res,next);
 })
 
+// logout user and redirect to login page
 router.get('/logout', (req, res) => {
   req.logout();
   req.flash('logout', 'You have successfully logged out.')
   res.redirect('/user/login')
 })
 
+// view someone else's profile
 router.get('/:userId', async ( req, res) => {
-  // TODO: replace this view with dog profile
   let userID = req.params.userId;
-
   const user = await db.user.findOne({where :{
     id: userID
   }})
-
   const dog = await db.dog.findAll({where :{
     userId: userID
   }});
-
   res.render('userprofile', {email: user.email , name: user.name, gender: user.gender, bio : user.bio, dog});
 })
 
