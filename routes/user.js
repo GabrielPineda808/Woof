@@ -7,10 +7,13 @@ const { forwardAuthenticated, ensureAuthenticated, forwardToProfile, isLoggedIn 
 // view your own profile
 router.get('/', ensureAuthenticated, isLoggedIn, async (req, res) => {
   const { email , name , gender, bio } = req.user;
-  const dog = await db.dog.findAll({ where: { userId: req.user.id } });
+  const user = await db.user.findOne({ where: { email }, include: [db.userReview]})
+  const dog = await db.dog.findAll({ where: { 
+    userId: req.user.id 
+  }, include: [db.dogReview] });
   let userEdit = req.isLoggedIn;
   let navView = req.isLoggedIn;
-  res.render('userprofile', { userEdit, navView, email, name, gender, bio, dog });
+  res.render('userprofile', { userEdit, navView, email, name, gender, bio, dog, user });
 })
 
 // show edit profile page
@@ -53,13 +56,12 @@ router.get('/:userId', forwardToProfile, isLoggedIn, async ( req, res) => {
   let userID = req.params.userId;
   const user = await db.user.findOne({where :{
     id: userID
-  }})
+  }, include: [db.userReview] })
   const dog = await db.dog.findAll({where :{
     userId: userID
-  }});
-  let dogReview;
+  }, include: [db.dogReview] });
   let navView = req.isLoggedIn;
-  res.render('userprofile', { dogReview: true, email: user.email , name: user.name, gender: user.gender, bio: user.bio, dog, navView});
+  res.render('userprofile', { viewerEmail: req.user.email, id: user.id, email: user.email , name: user.name, gender: user.gender, bio: user.bio, dog, user, navView});
 })
 
 

@@ -1,11 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
     var UserReview = sequelize.define("userReview", {
         body: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.TEXT,
             allowNull: false,
         },
         rating: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false
         }
     });

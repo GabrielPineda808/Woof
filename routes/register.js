@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
-const formValidate = require('../public/assets/js/formValidate');
 const { forwardAuthenticated } = require('../config/middleware/auth');
 
 // registration routes
