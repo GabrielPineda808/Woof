@@ -7,12 +7,13 @@ const { forwardAuthenticated, ensureAuthenticated, forwardToProfile, isLoggedIn 
 // view your own profile
 router.get('/', ensureAuthenticated, isLoggedIn, async (req, res) => {
   const { email , name , gender, bio } = req.user;
+  const user = await db.user.findOne({ where: { email }, include: [db.userReview]})
   const dog = await db.dog.findAll({ where: { 
     userId: req.user.id 
   }, include: [db.dogReview] });
   let userEdit = req.isLoggedIn;
   let navView = req.isLoggedIn;
-  res.render('userprofile', { userEdit, navView, email, name, gender, bio, dog });
+  res.render('userprofile', { userEdit, navView, email, name, gender, bio, dog, user });
 })
 
 // show edit profile page
