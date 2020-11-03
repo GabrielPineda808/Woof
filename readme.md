@@ -65,4 +65,4 @@ If you'd like to contribute, make a clone of the repository on your local machin
 
 ## Questions
 * [kvn.luo@gmail.com](kvn.luo@gmail.com)
-* 
+* [bryanbarello@gmail.com](bryanbarello@gmail.com)
