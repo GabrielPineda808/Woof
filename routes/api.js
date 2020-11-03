@@ -34,6 +34,7 @@ router.post('/review', (req, res) => {
 })
 
 router.post('/review/dog', (req, res) => {
+  console.log(req.body);
   res.sendStatus(200);
 })
 

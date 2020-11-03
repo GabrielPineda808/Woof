@@ -1,11 +1,25 @@
-const $username = $("#username").val();
-const $reviewBody = $("textarea#reviewBody").val();
 const $userReviewBtn = $("#userReviewBtn");
-const $rating = $("input[name='stars']").val();
 const $dogSubmitBtn = $("#dogSubmitBtn");
+const $dogName = $("select[name='dogName']").val();
+const $dates = $("input[name='dates']").val();
+const $dogBody = $("input[name='dogBody']").val();
+const $dStars = $("input[name='dStars']").val();
 
 $dogSubmitBtn.on("click", function() {
+  const dogReview = {
+    name: $dogName,
+    dates: $dates,
+    body: $dogBody,
+    rating: $dStars
+  }
 
+  $.ajax({
+    method: "POST",
+    url: "/api/review/dog",
+    data: dogReview
+  }).then(res => {
+    location.reload();
+  })
 });
 
 $userReviewBtn.on("click", function() {
