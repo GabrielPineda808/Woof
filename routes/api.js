@@ -33,9 +33,20 @@ router.post('/review', (req, res) => {
   res.sendStatus(200);
 })
 
-router.post('/review/dog', (req, res) => {
-  console.log(req.body);
-  res.sendStatus(200);
+router.post('/review/dog', async (req, res) => {
+
+  let newRevObj = {
+    dogId: req.body.dogId,
+    dates: req.body.dates,
+    body: req.body.dogBody,
+    rating: req.body.dStars,
+    userId: req.user.id
+  }
+  let newRev = await db.dogReview.create(newRevObj)
+  let currentDog = await db.dog.findOne({ where: { id: req.body.dogId }});
+
+  console.log(newRev);
+  res.redirect(`/user/${currentDog.userId}`);
 })
 
 module.exports = router;
