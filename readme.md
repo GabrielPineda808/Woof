@@ -23,6 +23,7 @@ An app for dogs and owners to meet nearby dogs and owners for a playdate.
 - Jquery                   - Dot-Env
 - Mysql                    - Heroku
 - Bcrypt                   - Handlebars.js
+- JawsDB
 ```
 
 ## Work Flow:
