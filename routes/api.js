@@ -29,8 +29,18 @@ router.get('/search/:userId', ensureAuthenticated, async(req, res) => {
   res.redirect(`/user/${userId}`)
 })
 
-router.post('/review', (req, res) => {
-  res.sendStatus(200);
+router.post('/review/:posteeId', async (req, res) => {
+  // let postee = await db.user.findOne({ where: { email: req.body.username }});
+  
+  let newRevObj = {
+    body: req.body.reviewBody,
+    rating: req.body.stars,
+    userId: req.params.posteeId, // postee id
+    posterEmail: req.body.username 
+  }
+  let newRev = await db.userReview.create(newRevObj);
+
+  res.redirect(`/user/${req.params.posteeId}`);
 })
 
 router.post('/review/dog', async (req, res) => {
@@ -45,8 +55,12 @@ router.post('/review/dog', async (req, res) => {
   let newRev = await db.dogReview.create(newRevObj)
   let currentDog = await db.dog.findOne({ where: { id: req.body.dogId }});
 
-  console.log(newRev);
   res.redirect(`/user/${currentDog.userId}`);
+})
+
+router.get('/user/:posterEmail', async (req, res) => {
+  let poster = await db.user.findOne({ where: { email: req.params.posterEmail }});
+  res.redirect(`/user/${poster.dataValues.id}`);
 })
 
 module.exports = router;

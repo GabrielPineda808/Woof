@@ -57,60 +57,60 @@
         {{/each}}
         {{#unless userEdit}}
         {{!-- dog review form --}}
-          <div class="position-fixed" style="left: 40%; top: 25%" id="reviewdog">
-            <form class="card shadow-lg" action="/api/review/dog" method="POST">
-              <div class="card-body">
-              <h4><strong>Leave a Review</strong></h4>
-                <div class="form-group">
-                  <select class="form-control" name="dogId">
-                    {{#each dog }}
-                    <option value="{{ this.id }}">{{ this.name }}</option>
-                    {{/each}}
-                  </select>
-                </div>
-                <div class="form-group">
-                  <input class="form-control" name="dates" type="number" placeholder="Number of Dates" min="1" required>
-                </div>
-                <div class="form-group">
-                  <textarea class="form-control border rounded" name="dogBody" placeholder="Review..." required></textarea>
-                </div>
-                <label for="exampleFormControlTextarea1"><strong>Rating : </strong></label>
-                <div class="form-group rating">
-                  <label>
-                    <input type="radio" name="dStars" value="1" />
-                    <span class="icon">★</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="dStars" value="2" />
-                    <span class="icon">★</span>
-                    <span class="icon">★</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="dStars" value="3" />
-                    <span class="icon">★</span>
-                    <span class="icon">★</span>
-                    <span class="icon">★</span>   
-                  </label>
-                  <label>
-                    <input type="radio" name="dStars" value="4" />
-                    <span class="icon">★</span>
-                    <span class="icon">★</span>
-                    <span class="icon">★</span>
-                    <span class="icon">★</span>
-                  </label>
-                  <label>
-                    <input type="radio" name="dStars" value="5" />
-                    <span class="icon">★</span>
-                    <span class="icon">★</span>
-                    <span class="icon">★</span>
-                    <span class="icon">★</span>
-                    <span class="icon">★</span>
-                  </label>
-                </div>
-                <button type="submit" class="btn btn-access mb-2" id="dogSubmitBtn">Submit Review</button>
+        <div class="position-fixed" style="left: 40%; top: 25%" id="reviewdog">
+          <form class="card shadow-lg" action="/api/review/dog" method="POST">
+            <div class="card-body">
+            <h4><strong>Leave a Review</strong></h4>
+              <div class="form-group">
+                <select class="form-control" name="dogId">
+                  {{#each dog }}
+                  <option value="{{ this.id }}">{{ this.name }}</option>
+                  {{/each}}
+                </select>
               </div>
-            </form>
-          </div>
+              <div class="form-group">
+                <input class="form-control" name="dates" type="number" placeholder="Number of Dates" min="1" required>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control border rounded" name="dogBody" placeholder="Review..." required></textarea>
+              </div>
+              <label for="exampleFormControlTextarea1"><strong>Rating : </strong></label>
+              <div class="form-group rating">
+                <label>
+                  <input type="radio" name="dStars" value="1" />
+                  <span class="icon">★</span>
+                </label>
+                <label>
+                  <input type="radio" name="dStars" value="2" />
+                  <span class="icon">★</span>
+                  <span class="icon">★</span>
+                </label>
+                <label>
+                  <input type="radio" name="dStars" value="3" />
+                  <span class="icon">★</span>
+                  <span class="icon">★</span>
+                  <span class="icon">★</span>   
+                </label>
+                <label>
+                  <input type="radio" name="dStars" value="4" />
+                  <span class="icon">★</span>
+                  <span class="icon">★</span>
+                  <span class="icon">★</span>
+                  <span class="icon">★</span>
+                </label>
+                <label>
+                  <input type="radio" name="dStars" value="5" />
+                  <span class="icon">★</span>
+                  <span class="icon">★</span>
+                  <span class="icon">★</span>
+                  <span class="icon">★</span>
+                  <span class="icon">★</span>
+                </label>
+              </div>
+              <button type="submit" class="btn btn-access mb-2" id="dogSubmitBtn">Submit Review</button>
+            </div>
+          </form>
+        </div>
         {{/unless}}
       </div>
       
@@ -120,22 +120,28 @@
           <div class="card">
             <div class="card-body">
               <ul class="list-group">
-                {{#each UserReview}}
-                  {{>UserReview/_userReviewCard}}
-                  <br>
+                {{#unless user.userReviews}}
+                <p>No reviews yet.</p>
+                {{/unless}}
+                {{#each user.userReviews}}
+                <p>Rating: {{this.rating}}/5</p>
+                <p>Review: {{this.body}}</p>
+                <a href='/api/user/{{ this.posterEmail }}'>Poster</a>
+                <br>
+                <br>
                 {{/each}}
               </ul>
             </div>
           </div>
           {{#unless userEdit}}
-            <form class="card mt-5 shadow-lg review-card">
+            <form action="/api/review/{{ id }}" method="POST" class="card mt-5 shadow-lg review-card">
               <div class="card-body">
                 <h4><strong>Leave a Review</strong></h4>
                 <div class="form-group">
-                  <input class="form-control" id="username" type="text" value="{{email}}" readonly>
+                  <input class="form-control" name="username" type="text" value="{{ viewerEmail }}" readonly>
                 </div>
                 <div class="form-group">
-                  <textarea class="form-control border rounded" id="reviewBody" placeholder="Review..."></textarea>
+                  <textarea class="form-control border rounded" name="reviewBody" placeholder="Review..."></textarea>
                 </div>
                 <label for="exampleFormControlTextarea1"><strong>Rating : </strong></label>
                 <div class="form-group rating">
@@ -170,7 +176,7 @@
                     <span class="icon">★</span>
                   </label>
                 </div>
-                <button type="button" class="btn btn-access mb-2" id="userReviewBtn">Submit Review</button>
+                <button type="submit" class="btn btn-access mb-2" id="userReviewBtn">Submit Review</button>
               </div>
             </form>
           {{/unless}}
@@ -185,6 +191,9 @@
               <ul class="list-group">
                 {{#each dog }}
                   <h4>{{this.name}}</h4>
+                  {{#unless this.dogReviews }}
+                  <p>No reviews yet.</p>
+                  {{/unless }}
                   {{#each this.dogReviews}}
                   <p>Rating: {{this.rating}}/5</p>
                   <p>Review: {{this.body}}</p>
