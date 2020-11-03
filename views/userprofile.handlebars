@@ -54,8 +54,9 @@
           
         {{/each}}
         {{#unless userEdit}}
+        {{!-- dog review form --}}
           <div class="position-fixed" style="left: 40%; top: 25%" id="reviewdog">
-            <form class="card shadow-lg">
+            <form class="card shadow-lg" action="/api/review/dog" method="POST">
               <div class="card-body">
               <h4><strong>Leave a Review</strong></h4>
                 <div class="form-group">
@@ -100,8 +101,7 @@
                     <span class="icon">★</span>
                   </label>
                 </div>
-                <button type="button" class="btn btn-access mb-2 ml-2" id="cancelBtn">Cancel</button>
-                <button type="button" class="btn btn-access mb-2 ml-2" id="dogSubmit">Submit Review</button>
+                <button type="button" class="btn btn-access mb-2" id="dogSubmit">Submit Review</button>
               </div>
             </form>
           </div>
@@ -164,7 +164,7 @@
                     <span class="icon">★</span>
                   </label>
                 </div>
-                <button type="button" class="btn btn-access mb-2 ml-2" id="userReviewBtn">Submit Review</button>
+                <button type="button" class="btn btn-access mb-2" id="userReviewBtn">Submit Review</button>
               </div>
             </form>
           {{/unless}}

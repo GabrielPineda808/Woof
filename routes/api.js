@@ -29,4 +29,12 @@ router.get('/search/:userId', ensureAuthenticated, async(req, res) => {
   res.redirect(`/user/${userId}`)
 })
 
+router.post('/review', (req, res) => {
+  res.sendStatus(200);
+})
+
+router.post('/review/dog', (req, res) => {
+  res.sendStatus(200);
+})
+
 module.exports = router;
