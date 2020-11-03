@@ -56,10 +56,10 @@ router.get('/:userId', forwardToProfile, isLoggedIn, async ( req, res) => {
   }})
   const dog = await db.dog.findAll({where :{
     userId: userID
-  }});
-  let dogReview;
+  }, include: [db.dogReview]});
+  
   let navView = req.isLoggedIn;
-  res.render('userprofile', { dogReview: true, email: user.email , name: user.name, gender: user.gender, bio: user.bio, dog, navView});
+  res.render('userprofile', { email: user.email , name: user.name, gender: user.gender, bio: user.bio, dog, navView});
 })
 
 

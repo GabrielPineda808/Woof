@@ -183,9 +183,14 @@
           <div class="card">
             <div class="card-body">
               <ul class="list-group">
-                {{#each DogReview}}
-                  {{>UserReview/_userReviewCard}}
+                {{#each dog }}
+                  <h4>{{this.name}}</h4>
+                  {{#each this.dogReviews}}
+                  <p>Rating: {{this.rating}}/5</p>
+                  <p>Review: {{this.body}}</p>
+                  <a href='/user/{{ this.userId }}'>Poster</a>
                   <br>
+                  {{/each}}
                 {{/each}}
               </ul>
             </div>
