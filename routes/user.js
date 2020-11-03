@@ -2,20 +2,22 @@ const express = require('express');
 const router = express.Router();
 const passport = require('../config/passport');
 const db = require("../models")
-const { forwardAuthenticated, ensureAuthenticated, forwardToProfile } = require('../config/middleware/auth');
+const { forwardAuthenticated, ensureAuthenticated, forwardToProfile, isLoggedIn } = require('../config/middleware/auth');
 
 // view your own profile
-router.get('/', ensureAuthenticated, async (req, res) => {
+router.get('/', ensureAuthenticated, isLoggedIn, async (req, res) => {
   const { email , name , gender, bio } = req.user;
   const dog = await db.dog.findAll({ where: { userId: req.user.id } });
-  let userEdit;
-  res.render('userprofile', { userEdit: true, email, name, gender, bio, dog });
+  let userEdit = req.isLoggedIn;
+  let navView = req.isLoggedIn;
+  res.render('userprofile', { userEdit, navView, email, name, gender, bio, dog });
 })
 
 // show edit profile page
-router.get('/edit', (req, res) => {
+router.get('/edit', isLoggedIn, (req, res) => {
   const { email , name , bio } = req.user;
-  res.render("userEdit", {email, name, bio} )
+  let navView = req.isLoggedIn;
+  res.render("userEdit", { navView, email, name, bio } )
 })
 
 // show edit dog profile page
@@ -47,7 +49,7 @@ router.get('/logout', (req, res) => {
 })
 
 // view someone else's profile
-router.get('/:userId', forwardToProfile, async ( req, res) => {
+router.get('/:userId', forwardToProfile, isLoggedIn, async ( req, res) => {
   let userID = req.params.userId;
   const user = await db.user.findOne({where :{
     id: userID
@@ -56,7 +58,9 @@ router.get('/:userId', forwardToProfile, async ( req, res) => {
     userId: userID
   }});
   let dogReview;
-  res.render('userprofile', { dogReview: true, email: user.email , name: user.name, gender: user.gender, bio: user.bio, dog});
+  let navView = req.isLoggedIn;
+  res.render('userprofile', { dogReview: true, email: user.email , name: user.name, gender: user.gender, bio: user.bio, dog, navView});
 })
+
 
 module.exports = router;

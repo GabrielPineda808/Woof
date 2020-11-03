@@ -1,16 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const { forwardAuthenticated, ensureAuthenticated } = require('../config/middleware/auth');
+const { ensureAuthenticated, isLoggedIn } = require('../config/middleware/auth');
 const db = require('../models');
 // routes for searches
 
-router.get('/', ensureAuthenticated, async (req, res) => {
+router.get('/', ensureAuthenticated, isLoggedIn, async (req, res) => {
   let { breeds, ages, temperaments } = await getSearchOptions();
-  let userEdit = true;
-  res.render('search', { breeds, ages, temperaments, userEdit });
+  let navView = req.isLoggedIn;
+  res.render('search', { breeds, ages, temperaments, navView });
 })
 
-router.post('/', async (req, res) => {
+router.post('/', isLoggedIn, async (req, res) => {
   let { breeds, ages, temperaments } = await getSearchOptions();
 
   let searchParams = req.body;
@@ -20,9 +20,9 @@ router.post('/', async (req, res) => {
       searchObj[key] = searchParams[key];
     }
   }
-  console.log(searchObj);
+  let navView = req.isLoggedIn;
   let dogResults = await db.dog.findAll({ where: searchObj })
-  res.render('search', { dogResults, breeds, ages, temperaments });
+  res.render('search', { dogResults, breeds, ages, temperaments, navView });
 })
 
 async function getSearchOptions() {

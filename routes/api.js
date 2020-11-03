@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require("../models")
-const { forwardAuthenticated, ensureAuthenticated } = require('../config/middleware/auth');
+const { ensureAuthenticated } = require('../config/middleware/auth');
 
 // edit user profile
 router.put('/edit', async (req, res) => {
@@ -24,7 +24,7 @@ router.post('/search', async(req, res) => {
   res.redirect(307, '/search');
 })
 
-router.get('/search/:userId', async(req, res) => {
+router.get('/search/:userId', ensureAuthenticated, async(req, res) => {
   let userId = req.params.userId;
   res.redirect(`/user/${userId}`)
 })

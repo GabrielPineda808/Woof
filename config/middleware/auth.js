@@ -19,4 +19,13 @@ function forwardToProfile(req, res, next) {
   res.redirect('/user');
 }
 
-module.exports = { ensureAuthenticated, forwardAuthenticated, forwardToProfile }
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    req.isLoggedIn = true;
+  } else {
+    req.isLoggedIn = false;
+  }
+  return next();
+}
+
+module.exports = { ensureAuthenticated, forwardAuthenticated, forwardToProfile, isLoggedIn }
