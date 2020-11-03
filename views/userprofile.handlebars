@@ -14,9 +14,12 @@
       <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#menu2">Reviews</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#menu3">Dog Reviews</a>
+      </li>
       {{#if userEdit}}
       <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#menu3">Account</a>
+        <a class="nav-link" data-toggle="tab" href="#menu4">Account</a>
       </li>
       {{/if}}
     </ul>
@@ -42,7 +45,6 @@
           <div class="row">
             <div class="col-lg-5">
               <h4><strong>{{this.name}}</strong></h4>
-              
               <p><strong>Breed : </strong> {{this.breed}}</p>
               <p><strong>Age :</strong> {{this.age}}</p>
               <p><strong>Gender :</strong> {{this.gender}}</p>
@@ -60,13 +62,17 @@
               <div class="card-body">
               <h4><strong>Leave a Review</strong></h4>
                 <div class="form-group">
-                  <input class="form-control" id="dogname" type="text" placeholder="Dog Name">
+                  <select name="name" class="form-control" name="dogName">
+                    {{#each dog }}
+                    <option>{{ this.name }}</option>
+                    {{/each}}
+                  </select>
                 </div>
                 <div class="form-group">
-                  <input class="form-control" id="dates" type="number" placeholder="Number of Dates" min="1">
+                  <input class="form-control" name="dates" type="number" placeholder="Number of Dates" min="1">
                 </div>
                 <div class="form-group">
-                  <textarea class="form-control border rounded" id="dogBody" placeholder="Review..."></textarea>
+                  <textarea class="form-control border rounded" name="dogBody" placeholder="Review..."></textarea>
                 </div>
                 <label for="exampleFormControlTextarea1"><strong>Rating : </strong></label>
                 <div class="form-group rating">
@@ -101,7 +107,7 @@
                     <span class="icon">★</span>
                   </label>
                 </div>
-                <button type="button" class="btn btn-access mb-2" id="dogSubmit">Submit Review</button>
+                <button type="submit" class="btn btn-access mb-2" id="dogSubmitBtn">Submit Review</button>
               </div>
             </form>
           </div>
@@ -172,6 +178,22 @@
       </div>
 
       <div id="menu3" class="container tab-pane fade"><br>
+        <div class="container">
+        <h2 class="profile-heading"> Dog Reviews</h2>
+          <div class="card">
+            <div class="card-body">
+              <ul class="list-group">
+                {{#each DogReview}}
+                  {{>UserReview/_userReviewCard}}
+                  <br>
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="menu4" class="container tab-pane fade"><br>
         <button class="btn btn-access" id="userEdit" data-toggle="modal" data-target="#confirmDelete">Delete Account</button>
 
         <div class="modal fade" id="confirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
