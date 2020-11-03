@@ -133,14 +133,15 @@
             </div>
           </div>
           {{#unless userEdit}}
-            <form action="/api/review/{{ id }}" method="POST" class="card mt-5 shadow-lg review-card">
+            {{!-- user review form --}}
+            <form action="/api/review/user/{{ id }}" method="POST" class="card mt-5 shadow-lg review-card">
               <div class="card-body">
                 <h4><strong>Leave a Review</strong></h4>
                 <div class="form-group">
                   <input class="form-control" name="username" type="text" value="{{ viewerEmail }}" readonly>
                 </div>
                 <div class="form-group">
-                  <textarea class="form-control border rounded" name="reviewBody" placeholder="Review..."></textarea>
+                  <textarea class="form-control border rounded" name="reviewBody" placeholder="Review..." required></textarea>
                 </div>
                 <label for="exampleFormControlTextarea1"><strong>Rating : </strong></label>
                 <div class="form-group rating">

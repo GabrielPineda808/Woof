@@ -29,7 +29,7 @@ router.get('/search/:userId', ensureAuthenticated, async(req, res) => {
   res.redirect(`/user/${userId}`)
 })
 
-router.post('/review/:posteeId', async (req, res) => {
+router.post('/review/user/:posteeId', async (req, res) => {
   // let postee = await db.user.findOne({ where: { email: req.body.username }});
   
   let newRevObj = {
