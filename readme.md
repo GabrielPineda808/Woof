@@ -33,6 +33,9 @@ The four main models used for this application were dog.js, dogReview.js, user.j
 
 After building the templating for each models, associations were drawn between each of the models.
 
+
+![model associations](./public/assets/images/readme_imgs/models.png) 
+
 *the code below shows how associations can be drawn*
 
 ```bash
@@ -45,6 +48,10 @@ After building the templating for each models, associations were drawn between e
 
   };
 ```
+
+The .belongsTo() function will used to state that there can be a multitude of rows from one table that apply to one row of the inputted table. The .hasMany() function would draw the opposite association. The table name preceding the function will umbrella over the inputted table meaning a multitude of rows from the inputted table can apply to one row of the preceding table.
+
+The line stating 'onDelete: "cascade"' allows the prgram to delete all instances that apply to the one row being deleted.
 
 #### Password Encryption
 
@@ -64,12 +71,6 @@ The salt process adds a random string of characters to the user's inputted passw
     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10));
   });
 ```
-
-The .belongsTo() function will used to state that there can be a multitude of rows from one table that apply to one row of the inputted table. The .hasMany() function would draw the opposite association. The table name preceding the function will umbrella over the inputted table meaning a multitude of rows from the inputted table can apply to one row of the preceding table.
-
-![model associations](./public/assets/images/readme_imgs/models.png) 
-
-The line stating 'onDelete: "cascade"' allows the prgram to delete all instances that apply to the one row being deleted.
 
 ### Editing User Profiles
 
