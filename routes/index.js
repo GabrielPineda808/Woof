@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const { forwardAuthenticated } = require('../config/middleware/auth');
+const { isLoggedIn } = require('../config/middleware/auth');
 
-router.get('/', forwardAuthenticated, (req, res) => {
-  // TODO: replace this view with homepage
-  res.render('index');
+router.get('/', isLoggedIn, (req, res) => {
+  let navView = req.isLoggedIn;
+  res.render('index', { navView });
 })
 
 module.exports = router;

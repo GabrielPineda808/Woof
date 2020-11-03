@@ -9,21 +9,19 @@
       <div class="col-md-9">
         <!---featured profile 1 -->
         <div class="card float-md-left mr-5 mb-5 " style="width: 18rem;">
-          <img src="https://place-hold.it/200x150" class="card-img-top" alt="...">
+          <img src="/assets/images/search1.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title"><a href="#">Dog1</a></h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <p class="float-sm-left w-100"> Male - Pitbull - Within 25 Miles</p>
+            <h5 class="card-title"><a href="#">Bubba</a></h5>
+            <p class="float-sm-left w-100"> Male - Dalmation - Coy</p>
             <a href="#" class="stretched-link">See Profile</a>
           </div>
         </div>
         <!---featured profile 2 -->
         <div class="card float-md-left mr-5 mb-5" style="width: 18rem;">
-          <img src="https://place-hold.it/200x150" class="card-img-top" alt="...">
+          <img src="/assets/images/search2.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title"><a href="#">Dog2</a></h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <p class="float-sm-left w-100"> Male - Pitbull - Within 25 Miles</p>
+            <h5 class="card-title"><a href="#">Cleo</a></h5>
+            <p class="float-sm-left w-100"> Female - Pug - Playful</p>
             <a href="#" class="stretched-link">See Profile</a>
           </div>
         </div>
@@ -33,18 +31,11 @@
       <div class="col-md-3">
         <h3 class="mb-3">Search Dogs</h3>
         <form action='/api/search' id="dogsearch" method='POST' class="search-form">
-          <!-- select available to breed-->
-          <div class="form-group">
-            <select class="form-control" id="available-to-breed">
-              <option>Available to Breed</option>
-              <option>Not Available to Breed</option>
-              
-            </select>
-          </div>
+
           <!-- select breed of dog-->
           <div class="form-group">
             <select name="breed" class="form-control" id="breed">
-              <option>- Any Breed -</option>
+              <option value=''>- Any Breed -</option>
               {{#each breeds }}
               <option>{{ this.breed }}</option>
               {{/each}}
@@ -53,7 +44,7 @@
           <!-- select age of dog-->
           <div class="form-group">
             <select name="age" class="form-control" id="age">
-              <option>- Any Age -</option>
+              <option value=''>- Any Age -</option>
               {{#each ages }}
               <option>{{ this.age }}</option>
               {{/each}}
@@ -62,23 +53,14 @@
 
           <!-- select temperment of dog-->
           <div class="form-group">
-            <select name="temperament" class="form-control" id="temperment">
-              <option>- Any Temperment -</option>
+            <select name="temperament" class="form-control" id="temperament">
+              <option value=''>- Any Temperament -</option>
               {{#each temperaments }}
               <option>{{ this.temperament }}</option>
               {{/each}}
             </select>       
           </div>
-          <!-- select with milage of dog-->
-          <div class="form-group">
-            <select name="within-miles" class="form-control" id="within-miles">
-              <option>- Within Any Miles -</option>
-              <option>Within 25 Miles</option>
-              <option>Within 26-50 Miles</option>
-              <option>Within 51-99 Miles</option>
-              <option>Within 100-500 Miles</option>
-            </select>       
-          </div>
+
           <!-- select gender of dog -->
           <div class="form-group">
             <div class="form-check form-check-inline">
@@ -92,8 +74,7 @@
           </div>
 
           <!-- submit search button-->
-          <button id="search-button" type="submit" class="btn btn-primary mr-3">Search</button>
-          <button type="button" id="clear" class="btn btn-warning">Clear</button>
+          <button id="search-button" type="submit" class="btn btn-access mr-3">Search</button>
         </form>
       </div>
     </div>

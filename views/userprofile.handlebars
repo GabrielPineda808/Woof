@@ -41,9 +41,7 @@
         {{#each dog}}
           <div class="row">
             <div class="col-lg-5">
-              <h4><strong>{{this.name}}</strong> {{#unless dogReview}}
-                <button type="button" class="btn btn-access mb-2 ml-2" id="dogReviewBtn">Review me!</button>
-              {{/unless}}</h4>
+              <h4><strong>{{this.name}}</strong></h4>
               
               <p><strong>Breed : </strong> {{this.breed}}</p>
               <p><strong>Age :</strong> {{this.age}}</p>
@@ -52,64 +50,67 @@
               <P><strong>Bio:</strong> <br>
                 {{this.bio}}</P>
             </div>
-            <div class="col-lg-7" id="reviewdog">
-                <form>
-                  <div class="form-group">
-                    <label for="exampleFormControlInput1"><strong>Dog Name :</strong></label>
-                    <input class="form-control" id="dogname" type="text" value="{{this.name}}" readonly>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleFormControlInput1"><strong>Dates :</strong></label>
-                    <input class="form-control" id="dates" type="number">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleFormControlTextarea1"><strong>Review : </strong></label>
-                    <textarea class="form-control border rounded" id="dogBody" placeholder="Leave a review ..."></textarea>
-                  </div>
-                  <label for="exampleFormControlTextarea1"><strong>Rating : </strong></label>
-                  <div class="form-group rating">
-                    <label>
-                      <input type="radio" name="stars" value="1" />
-                      <span class="icon">★</span>
-                    </label>
-                    <label>
-                      <input type="radio" name="stars" value="2" />
-                      <span class="icon">★</span>
-                      <span class="icon">★</span>
-                    </label>
-                    <label>
-                      <input type="radio" name="stars" value="3" />
-                      <span class="icon">★</span>
-                      <span class="icon">★</span>
-                      <span class="icon">★</span>   
-                    </label>
-                    <label>
-                      <input type="radio" name="stars" value="4" />
-                      <span class="icon">★</span>
-                      <span class="icon">★</span>
-                      <span class="icon">★</span>
-                      <span class="icon">★</span>
-                    </label>
-                    <label>
-                      <input type="radio" name="stars" value="5" />
-                      <span class="icon">★</span>
-                      <span class="icon">★</span>
-                      <span class="icon">★</span>
-                      <span class="icon">★</span>
-                      <span class="icon">★</span>
-                    </label>
-                  </div>
-                  <button type="button" class="btn btn-access mb-2 ml-2" id="cancelBtn">Cancel</button>
-                  <button type="button" class="btn btn-access mb-2 ml-2" id="dogSubmit">Submit Review</button>
-                </form>
-            </div>
           </div>
+          
         {{/each}}
+        {{#unless userEdit}}
+          <div class="position-fixed" style="left: 40%; top: 25%" id="reviewdog">
+            <form class="card shadow-lg">
+              <div class="card-body">
+              <h4><strong>Leave a Review</strong></h4>
+                <div class="form-group">
+                  <input class="form-control" id="dogname" type="text" placeholder="Dog Name">
+                </div>
+                <div class="form-group">
+                  <input class="form-control" id="dates" type="number" placeholder="Number of Dates" min="1">
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control border rounded" id="dogBody" placeholder="Review..."></textarea>
+                </div>
+                <label for="exampleFormControlTextarea1"><strong>Rating : </strong></label>
+                <div class="form-group rating">
+                  <label>
+                    <input type="radio" name="stars" value="1" />
+                    <span class="icon">★</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="stars" value="2" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="stars" value="3" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>   
+                  </label>
+                  <label>
+                    <input type="radio" name="stars" value="4" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="stars" value="5" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                  </label>
+                </div>
+                <button type="button" class="btn btn-access mb-2 ml-2" id="cancelBtn">Cancel</button>
+                <button type="button" class="btn btn-access mb-2 ml-2" id="dogSubmit">Submit Review</button>
+              </div>
+            </form>
+          </div>
+        {{/unless}}
       </div>
       
       <div id="menu2" class="container tab-pane fade"><br>
-        <h2 class="profile-heading"> Reviews</h2>
         <div class="container">
+        <h2 class="profile-heading"> Reviews</h2>
           <div class="card">
             <div class="card-body">
               <ul class="list-group">
@@ -120,55 +121,53 @@
               </ul>
             </div>
           </div>
-          <div>
           {{#unless userEdit}}
-            <form>
-              <div class="form-group">
-                <label for="exampleFormControlInput1"><strong>Username :</strong></label>
-                <input class="form-control" id="username" type="text" value="{{email}}" readonly>
+            <form class="card mt-5 shadow-lg review-card">
+              <div class="card-body">
+                <h4><strong>Leave a Review</strong></h4>
+                <div class="form-group">
+                  <input class="form-control" id="username" type="text" value="{{email}}" readonly>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control border rounded" id="reviewBody" placeholder="Review..."></textarea>
+                </div>
+                <label for="exampleFormControlTextarea1"><strong>Rating : </strong></label>
+                <div class="form-group rating">
+                  <label>
+                    <input type="radio" name="stars" value="1" />
+                    <span class="icon">★</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="stars" value="2" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="stars" value="3" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>   
+                  </label>
+                  <label>
+                    <input type="radio" name="stars" value="4" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="stars" value="5" />
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                    <span class="icon">★</span>
+                  </label>
+                </div>
+                <button type="button" class="btn btn-access mb-2 ml-2" id="userReviewBtn">Submit Review</button>
               </div>
-              <div class="form-group">
-                <label for="exampleFormControlTextarea1"><strong>Review : </strong></label>
-                <textarea class="form-control border rounded" id="reviewBody" placeholder="Leave a review ..."></textarea>
-              </div>
-              <label for="exampleFormControlTextarea1"><strong>Rating : </strong></label>
-              <div class="form-group rating">
-                <label>
-                  <input type="radio" name="stars" value="1" />
-                  <span class="icon">★</span>
-                </label>
-                <label>
-                  <input type="radio" name="stars" value="2" />
-                  <span class="icon">★</span>
-                  <span class="icon">★</span>
-                </label>
-                <label>
-                  <input type="radio" name="stars" value="3" />
-                  <span class="icon">★</span>
-                  <span class="icon">★</span>
-                  <span class="icon">★</span>   
-                </label>
-                <label>
-                  <input type="radio" name="stars" value="4" />
-                  <span class="icon">★</span>
-                  <span class="icon">★</span>
-                  <span class="icon">★</span>
-                  <span class="icon">★</span>
-                </label>
-                <label>
-                  <input type="radio" name="stars" value="5" />
-                  <span class="icon">★</span>
-                  <span class="icon">★</span>
-                  <span class="icon">★</span>
-                  <span class="icon">★</span>
-                  <span class="icon">★</span>
-                </label>
-              </div>
-              
-              <button type="button" class="btn btn-access mb-2 ml-2" id="userReviewBtn">Submit Review</button>
             </form>
           {{/unless}}
-          </div>
         </div>
       </div>
 
