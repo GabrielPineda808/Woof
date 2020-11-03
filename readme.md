@@ -5,8 +5,6 @@
 An app for dogs and owners to meet nearby dogs and owners for a playdate. 
 
 ## Table of Contents
-- [Woof](#woof)
-  - [Table of Contents](#table-of-contents)
   - [Technologies:](#technologies)
   - [Work Flow:](#work-flow)
   - [Code & Usage](#code--usage)
