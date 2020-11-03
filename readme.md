@@ -31,6 +31,17 @@ We started the project by divvying up tasks based on front end and back end work
 
 ## Code
 
+**Editing User Profiles**
+
+One set of routes was dedicated to editing a user's profile. The process began with the edit button on the logged in user's profile page which redirects you to the edit profile page. The edit profile page is prepopulated with the user's database information and when the user submits the edit profile form a put request is sent to an api route which updates our database. 
+
+![edit-profile](./public/assets/gifs/edit_profile.gif)
+
+**Posting Reviews**
+
+Posting reviews was a little more difficult since we had to add values for who was posting the review and who was receiving the review. When a user posts a new review, a review instance is created and you get redirected back to the user profile you were on. The user profile route queries for all reviews related to this profile so your posted review will show up
+
+![post-review](./public/assets/gifs/dog-review.gif)
 
 
 ## Usage
